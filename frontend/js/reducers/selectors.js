@@ -1,0 +1,1 @@
+export const allBooks = ({ books }) => Object.keys(books).map(id => books[id]);

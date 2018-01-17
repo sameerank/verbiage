@@ -1,0 +1,15 @@
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Story Grader</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    {% render_bundle 'main' %}
+</body>
+</html>
