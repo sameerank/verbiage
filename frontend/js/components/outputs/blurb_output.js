@@ -12,9 +12,8 @@ const styles = {
         flex: 1,
     },
 };
-
-
 class BlurbOutput extends Component {
+
     render () {
         const data = [
             {x: 0, y: 8},
@@ -28,8 +27,10 @@ class BlurbOutput extends Component {
             {x: 8, y: 2},
             {x: 9, y: 0}
         ];
+;
         return(
             <Card style={styles.cardRight} zDepth={1}>
+                <CardHeader>{this.props.classifier.description}</CardHeader>
                 <div style={styles.div}>
                     <XYPlot height={300} width= {300}>
                         <VerticalGridLines />

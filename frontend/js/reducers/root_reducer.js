@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import booksReducer from './books_reducer';
+import classifiersReducer from './classifiers_reducer';
 
 const rootReducer = combineReducers({
-    books: booksReducer
+    classifier: classifiersReducer
 });
 
 export default rootReducer;

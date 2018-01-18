@@ -1,5 +1,8 @@
 from api.models import Book, Level, TrainedModel
 from api.serializers import BookSerializer, LevelSerializer, TrainedModelSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 from rest_framework import generics
 
 
@@ -26,3 +29,9 @@ class LevelDetail(generics.RetrieveUpdateDestroyAPIView):
 class TrainedModelList(generics.ListCreateAPIView):
     queryset = TrainedModel.objects.all()
     serializer_class = TrainedModelSerializer
+
+
+class Classifier(APIView):
+
+    def post(self, response, format=None):
+        return Response(response.data, status=status.HTTP_201_CREATED)

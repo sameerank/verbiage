@@ -1,8 +1,7 @@
-import React from 'react';
-import BookListContainer from './book_list/book_list_container';
-import BlurbInput from './inputs/blub_input'
-import BlurbOutput from './outputs/blub_output'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import React, { Component } from 'react';
+import BlurbInputContainer from './inputs/blurb_input_container';
+import BlurbOutputContainer from './outputs/blurb_output_container';
+import {Card, CardTitle, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
 // From https://github.com/oliviertassinari/react-swipeable-views
 import SwipeableViews from 'react-swipeable-views';
@@ -29,12 +28,10 @@ const styles = {
     },
 };
 
-class App extends React.Component {
+class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            slideIndex: 0,
-        };
+        this.state = { slideIndex: 0 };
     }
 
     handleChange(value) {
@@ -50,18 +47,18 @@ class App extends React.Component {
                     title="Book Blurb Tailor"
                     subtitle="An app for helping tailor your book's description to the right school grade level." />
                 <Tabs
-                    onChange={this.handleChange.bind(this)}
+                    onChange={(v) => this.handleChange(v)}
                     value={this.state.slideIndex}>
                     <Tab label="The app" value={0} />
                     <Tab label="Under the hood" value={1} />
                 </Tabs>
                 <SwipeableViews
                     index={this.state.slideIndex}
-                    onChangeIndex={this.handleChange.bind(this)}
+                    onChangeIndex={(v) => this.handleChange(v)}
                 >
                     <CardText style={styles.div}>
-                        <BlurbInput />
-                        <BlurbOutput />
+                        <BlurbInputContainer />
+                        <BlurbOutputContainer />
                     </CardText>
                     <CardText style={styles.slide}>
                         Explanation will go here

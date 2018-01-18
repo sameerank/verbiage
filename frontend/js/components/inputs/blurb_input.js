@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 
@@ -12,7 +12,15 @@ const styles = {
     },
 };
 
-class BlurbInput extends React.Component {
+class BlurbInput extends Component {
+
+    handleChange(event) {
+        const payload = {
+            description: event.target.value
+        };
+        this.props.createClassifier(payload);
+    }
+
     render () {
         return(
             <Card style={styles.cardLeft} zDepth={1}>
@@ -23,6 +31,7 @@ class BlurbInput extends React.Component {
                         multiLine={true}
                         fullWidth={true}
                         rows={15}
+                        onChange={(e) => this.handleChange(e)}
                     />
                 </div>
             </Card>
