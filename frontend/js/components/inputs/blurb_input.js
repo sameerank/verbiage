@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
     div: {
@@ -13,10 +14,19 @@ const styles = {
 };
 
 class BlurbInput extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { inputText: '' };
+    }
 
     handleChange(event) {
+        this.setState({ inputText: event.target.value })
+    }
+
+    handleClick(event) {
+        console.log(this.state.inputText);
         const payload = {
-            description: event.target.value
+            description: this.state.inputText
         };
         this.props.createClassifier(payload);
     }
@@ -24,7 +34,7 @@ class BlurbInput extends Component {
     render () {
         return(
             <Card style={styles.cardLeft} zDepth={1}>
-                <div style={styles.div}>
+                <form style={styles.div}>
                     <TextField
                         hintText="Type book blurb here"
                         floatingLabelText="Book blurb"
@@ -33,7 +43,10 @@ class BlurbInput extends Component {
                         rows={15}
                         onChange={(e) => this.handleChange(e)}
                     />
-                </div>
+                    <RaisedButton label="Primary"
+                                  primary={true}
+                                  onClick={(e) => this.handleClick(e)} />
+                </form>
             </Card>
         );
     }
