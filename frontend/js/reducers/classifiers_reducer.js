@@ -1,4 +1,4 @@
-import { RECEIVE_CLASSIFIER } from '../actions/classifier_actions';
+import { RECEIVE_CLASSIFIER, CLEAR_CLASSIFIER } from '../actions/classifier_actions';
 import merge from 'lodash/merge';
 
 const classifiersReducer = (state = {}, action) => {
@@ -7,6 +7,8 @@ const classifiersReducer = (state = {}, action) => {
         case RECEIVE_CLASSIFIER:
             const newClassifier = action.classifier;
             return merge({}, state, newClassifier);
+        case CLEAR_CLASSIFIER:
+            return {};
         default:
             return state;
     }

@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import BlurbInputContainer from './inputs/blurb_input_container';
 import BlurbOutputContainer from './outputs/blurb_output_container';
+import FeatureImportanceContainer from './outputs/feature_importance_container';
+import ConfusionMatrix from './explanations/confusion_matrix';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
 // From https://github.com/oliviertassinari/react-swipeable-views
 import SwipeableViews from 'react-swipeable-views';
+import FeatureImportance from "./outputs/feature_importance";
 
 const styles = {
     card: {
         flex: '1 1 100%',
-        // minHeight: 0,
         display: 'flex',
         flexDirection: 'column'
     },
-    div:{
+    rowDiv:{
         display: 'flex',
-        flexDirection: 'row wrap',
+        flexDirection: 'row',
+    },
+    colDiv:{
+        display: 'flex',
+        flexDirection: 'column',
     },
     headline: {
         fontSize: 24,
@@ -56,12 +62,17 @@ class App extends Component {
                     index={this.state.slideIndex}
                     onChangeIndex={(v) => this.handleChange(v)}
                 >
-                    <CardText style={styles.div}>
-                        <BlurbInputContainer />
-                        <BlurbOutputContainer />
+                    <CardText>
+                        <div style={styles.rowDiv}>
+                            <BlurbInputContainer />
+                            <BlurbOutputContainer />
+                        </div>
+                        <div style={styles.colDiv}>
+                            <FeatureImportanceContainer />
+                        </div>
                     </CardText>
                     <CardText style={styles.slide}>
-                        Explanation will go here
+                        <ConfusionMatrix />
                     </CardText>
                 </SwipeableViews>
             </Card>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BlurbOutput from './blurb_output';
+import FeatureImportance from './feature_importance';
 
 // Actions
 import {clearClassifier} from '../../actions/classifier_actions';
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(BlurbOutput);
+)(FeatureImportance);

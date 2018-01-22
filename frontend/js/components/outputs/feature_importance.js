@@ -15,17 +15,17 @@ const styles = {
         flex: 1,
     },
 };
-class BlurbOutput extends Component {
-
+class FeatureImportance extends Component {
 
     render () {
-        let predict_probas = [];
-        if (!_.isUndefined(this.props.classifier.predict_probas)) {
-            predict_probas = this.props.classifier.ordered_class_names.map(
+        let as_lists = [];
+        if (!_.isUndefined(this.props.classifier.as_list)) {
+            as_lists = this.props.classifier.ordered_class_names.map(
                 (k) => ({
-                    x: this.props.classifier.predict_probas[k],
-                    y: k + ' (' + this.props.classifier.predict_probas[k] + ')'
-                })
+                    title: k,
+                    data: this.props.classifier.as_list[k].map(
+                        (wrd_ind) => ({x: wrd_ind[1], y: wrd_ind[0] + ' (' + wrd_ind[1] + ')'})
+                    )})
             );
         }
         if (!_.isEmpty(this.props.classifier)) {
@@ -36,17 +36,16 @@ class BlurbOutput extends Component {
                         <h3>This book sounds like it should be read by students in these grades:</h3><h1>{this.props.classifier.final_prediction}</h1>
                     </CardHeader>
                     <CardText>
-                        { predict_probas.length ? <HorBarChart data={predict_probas} title={'Prediction probabilities'} /> : ''}
+                        { as_lists.length ? as_lists.map((as_list, idx) => <HorBarChart
+                            data={as_list.data}
+                            title={'Feature importance for the ' + as_list.title + ' range'}
+                            key={idx}
+                        />) : ''}
                     </CardText>
                 </Card>);
         }
-        return (
-            <Card style={styles.card} zDepth={1}>
-                <CardHeader style={{textAlign: 'center'}}>
-                    <h3>Waiting for user input</h3>
-                </CardHeader>
-            </Card>);
+        return '';
     }
 }
 
-export default BlurbOutput;
+export default FeatureImportance;
