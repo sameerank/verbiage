@@ -24,7 +24,7 @@ class BlurbOutput extends Component {
             predict_probas = this.props.classifier.ordered_class_names.map(
                 (k) => ({
                     x: this.props.classifier.predict_probas[k],
-                    y: k + ' (' + this.props.classifier.predict_probas[k] + ')'
+                    y: k
                 })
             );
         }

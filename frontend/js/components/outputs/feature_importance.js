@@ -24,7 +24,7 @@ class FeatureImportance extends Component {
                 (k) => ({
                     title: k,
                     data: this.props.classifier.as_list[k].map(
-                        (wrd_ind) => ({x: wrd_ind[1], y: wrd_ind[0] + ' (' + wrd_ind[1] + ')'})
+                        (wrd_ind) => ({x: wrd_ind[1], y: wrd_ind[0]})
                     )})
             );
         }

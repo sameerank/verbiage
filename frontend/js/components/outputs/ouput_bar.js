@@ -22,8 +22,9 @@ class OutputBar extends Component {
         return (
             <AppBar
                 title={<span style={styles.title}>Classification Results</span>}
-                onTitleClick={(e) => this.handleClick(e)}
-                iconElementLeft={<IconButton><NavigationClose /></IconButton>}/>
+                iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+                onLeftIconButtonClick={(e) => this.handleClick(e)}
+            />
         );
     }
 }

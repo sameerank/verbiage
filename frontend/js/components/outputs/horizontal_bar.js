@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import 'react-vis/dist/style.css';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import {XYPlot, makeWidthFlexible, XAxis, YAxis, HorizontalBarSeries} from 'react-vis';
+import Chip from 'material-ui/Chip';
+import {XYPlot, makeWidthFlexible, XAxis, YAxis, HorizontalBarSeries, Hint} from 'react-vis';
 
 const styles = {
     card: {
@@ -14,26 +15,33 @@ class HorBarChart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hint_value: null
+            hoveredCell: false
         };
     }
 
     render () {
         const FlexibleXYPlot = makeWidthFlexible(XYPlot);
+        let {hoveredCell} = this.state;
         return (
             <Card style={styles.card}>
                 <CardHeader>{this.props.title}</CardHeader>
                 <CardText>
-                    <FlexibleXYPlot
-                        margin={{left: 250, right: 250}}
+                    <XYPlot
+                        margin={{left: 100, right: 100}}
                         yType={'ordinal'}
+                        width={500}
                         height={300} >
                         <HorizontalBarSeries
                             data={this.props.data}
+                            onValueMouseOver={v => this.setState({hoveredCell: v.x && v.y ? v : false})}
+                            onValueMouseOut={v => this.setState({hoveredCell: false})}
                         />
+                        { hoveredCell ? <Hint value={hoveredCell}>
+                            <Chip><strong>{ hoveredCell.y } :</strong> { hoveredCell.x })</Chip>
+                        </ Hint> : null}
                         <XAxis />
                         <YAxis />
-                    </FlexibleXYPlot>
+                    </XYPlot>
                 </CardText>
             </Card>
         )
