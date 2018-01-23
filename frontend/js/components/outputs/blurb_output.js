@@ -5,6 +5,7 @@ import OutputBar from './ouput_bar'
 import _ from 'lodash'
 import {XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, HorizontalBarSeries} from 'react-vis';
 import HorBarChart from './horizontal_bar';
+import ReactAnimatedEllipsis from 'react-animated-ellipsis';
 import { FETCHING, TYPING } from '../../actions/input_actions'
 
 const styles = {
@@ -32,7 +33,7 @@ class BlurbOutput extends Component {
         if (_.includes([TYPING, FETCHING], this.props.input.type)) {
             const convertTypeToText = {TYPING: "User is typing", FETCHING: "Fetching results"};
             return (
-            <Card style={styles.card} zDepth={1}>
+            <Card style={styles.card}>
                 <CardHeader style={{textAlign: 'center'}}>
                     <h3>{ convertTypeToText[this.props.input.type] }</h3>
                 </CardHeader>
@@ -61,7 +62,7 @@ class BlurbOutput extends Component {
         return (
             <Card style={styles.card} zDepth={1}>
                 <CardHeader style={{textAlign: 'center'}}>
-                    <h3>Waiting for user input</h3>
+                    <h3>Waiting for user input <ReactAnimatedEllipsis /></h3>
                 </CardHeader>
             </Card>);
     }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import 'react-vis/dist/style.css';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import Chip from 'material-ui/Chip';
-import {XYPlot, makeWidthFlexible, XAxis, YAxis, HorizontalBarSeries, Hint} from 'react-vis';
+import {XYPlot, XAxis, YAxis, HorizontalBarSeries, Hint} from 'react-vis';
 
 const styles = {
     div: {
@@ -19,7 +18,6 @@ class HorBarChart extends Component {
     }
 
     render () {
-        const FlexibleXYPlot = makeWidthFlexible(XYPlot);
         let {hoveredCell} = this.state;
         return (
             <div style={styles.div}>

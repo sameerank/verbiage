@@ -7,6 +7,7 @@ import {XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, Horizontal
 import HorBarChart from './horizontal_bar';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
+import {FETCHING, TYPING} from "../../actions/input_actions";
 
 const styles = {
     div: {
@@ -31,17 +32,23 @@ class FeatureImportance extends Component {
     }
 
     render () {
-        let as_lists = [];
-        if (!_.isUndefined(this.props.classifier.as_list)) {
-            as_lists = this.props.classifier.ordered_class_names.map(
+        if (_.includes([TYPING, FETCHING], this.props.input.type)) {
+            const convertTypeToText = {TYPING: "User is typing", FETCHING: "Fetching results"};
+            return (
+                <Card style={styles.card}>
+                    <CardHeader style={{textAlign: 'center'}}>
+                        <h3>{ convertTypeToText[this.props.input.type] }</h3>
+                    </CardHeader>
+                </Card>);
+        }
+        if (!_.isEmpty(this.props.classifier)) {
+            const as_lists = this.props.classifier.ordered_class_names.map(
                 (k) => ({
                     title: k,
                     data: this.props.classifier.as_list[k].map(
                         (wrd_ind) => ({x: wrd_ind[1], y: wrd_ind[0]})
                     )})
             );
-        }
-        if (!_.isEmpty(this.props.classifier)) {
             return (
                 <Card style={styles.card}>
                     <Tabs

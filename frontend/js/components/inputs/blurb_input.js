@@ -19,7 +19,10 @@ const styles = {
     button:{
         marginTop: 10,
         marginRight: 10
-    }
+    },
+    selectWidth: {
+        width: 150,
+    },
 };
 
 class BlurbInput extends Component {
@@ -47,10 +50,6 @@ class BlurbInput extends Component {
         console.log(event, index, value);
     }
 
-    handleSubmitClick(event) {
-        this.props.createClassifier(this.props.input);
-    }
-
     handleClearClick(event) {
         this.props.clearClassifier();
         this.props.clearInput()
@@ -62,7 +61,7 @@ class BlurbInput extends Component {
                 <form style={styles.div}>
                     <TextField
                         hintText="Type book blurb here"
-                        floatingLabelText="Book blurb"
+                        floatingLabelText="Book description"
                         multiLine={true}
                         fullWidth={true}
                         rows={5}
@@ -70,22 +69,17 @@ class BlurbInput extends Component {
                         onChange={(e) => this.handleTextChange(e)}
                     />
                     <SelectField
-                        floatingLabelText="Frequency"
+                        floatingLabelText="Intended Age"
                         value={this.state.selectValue}
                         onChange={this.handleSelectChange}
-                    >
-                        <MenuItem value={1} primaryText="Never" />
-                        <MenuItem value={2} primaryText="Every Night" />
-                        <MenuItem value={3} primaryText="Weeknights" />
-                        <MenuItem value={4} primaryText="Weekends" />
-                        <MenuItem value={5} primaryText="Weekly" />
+                        style={styles.selectWidth} >
+                        <MenuItem value={1} primaryText="Preschool/Pre-K" />
+                        <MenuItem value={2} primaryText="K-2" />
+                        <MenuItem value={3} primaryText="3-5" />
+                        <MenuItem value={4} primaryText="6-8" />
+                        <MenuItem value={5} primaryText="9-12" />
                     </SelectField>
-                    <RaisedButton style={styles.button}
-                                  label="Submit"
-                                  primary={true}
-                                  disabled={this.props.input.type === FETCHING || !this.props.input.description}
-                                  onClick={(e) => this.handleSubmitClick(e)} />
-                    <span style={{width: 10}}/>
+                    <br />
                     <RaisedButton style={styles.button}
                                   label="Clear"
                                   secondary={true}

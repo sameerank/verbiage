@@ -50,8 +50,8 @@ class App extends Component {
             <div>
                 <Card style={styles.card}>
                     <CardTitle
-                        title="Book Blurb Tailor"
-                        subtitle="An app for helping tailor your book's description to the right school grade level." />
+                        title="VerbiAge"
+                        subtitle="An app for helping tailor your book's description to the right K-12 age group." />
                     <CardText>
                         <div style={styles.rowDiv}>
                             <BlurbInputContainer />
