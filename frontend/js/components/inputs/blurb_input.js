@@ -2,14 +2,19 @@ import React, {Component} from 'react';
 import {Card} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import _ from 'lodash';
+import { FETCHING } from '../../actions/input_actions'
 
 const styles = {
     div: {
         margin: '20px',
     },
     card: {
+        marginRight: 10,
         flex: 1,
+        minWidth: 0
     },
     button:{
         marginTop: 10,
@@ -20,32 +25,35 @@ const styles = {
 class BlurbInput extends Component {
     constructor(props) {
         super(props);
-        this.state = { inputText: '' };
+        this.state = {
+            selectValue: 0
+        }
     }
 
     componentWillMount() {
-        this.debouncedCreateClassifier = _.debounce(this.props.createClassifier, 1000);
+        this.debouncedCreateClassifier = _.debounce((payload) => {
+            this.props.fetchingInput(payload);
+            this.props.createClassifier(payload);
+            }, 1000);
     }
 
-    handleChange(event) {
-        this.setState({ inputText: event.target.value });
-        console.log('handleChange');
-        const payload = {
-            description: this.state.inputText
-        };
+    handleTextChange(event) {
+        const payload = { description: event.target.value };
+        this.props.typingInput(payload);
         this.debouncedCreateClassifier(payload);
     }
 
+    handleSelectChange(event, index, value) {
+        console.log(event, index, value);
+    }
+
     handleSubmitClick(event) {
-        const payload = {
-            description: this.state.inputText
-        };
-        this.props.createClassifier(payload);
+        this.props.createClassifier(this.props.input);
     }
 
     handleClearClick(event) {
         this.props.clearClassifier();
-        this.setState({ inputText: '' });
+        this.props.clearInput()
     }
 
     render () {
@@ -58,17 +66,30 @@ class BlurbInput extends Component {
                         multiLine={true}
                         fullWidth={true}
                         rows={5}
-                        value={this.state.inputText}
-                        onChange={(e) => this.handleChange(e)}
+                        value={this.props.input.description}
+                        onChange={(e) => this.handleTextChange(e)}
                     />
+                    <SelectField
+                        floatingLabelText="Frequency"
+                        value={this.state.selectValue}
+                        onChange={this.handleSelectChange}
+                    >
+                        <MenuItem value={1} primaryText="Never" />
+                        <MenuItem value={2} primaryText="Every Night" />
+                        <MenuItem value={3} primaryText="Weeknights" />
+                        <MenuItem value={4} primaryText="Weekends" />
+                        <MenuItem value={5} primaryText="Weekly" />
+                    </SelectField>
                     <RaisedButton style={styles.button}
                                   label="Submit"
                                   primary={true}
+                                  disabled={this.props.input.type === FETCHING || !this.props.input.description}
                                   onClick={(e) => this.handleSubmitClick(e)} />
                     <span style={{width: 10}}/>
                     <RaisedButton style={styles.button}
                                   label="Clear"
                                   secondary={true}
+                                  disabled={this.props.input.type === FETCHING || !this.props.input.description}
                                   onClick={(e) => this.handleClearClick(e)} />
                 </form>
             </Card>

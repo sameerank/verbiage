@@ -43,6 +43,9 @@ class W2VClassifier(APIView):
         classifier = tm.pickled_model
         vectorizer = load_word2vec()
         input_text = request.data.get('description', 'ERROR')
+        if not input_text:
+            response = {'error': 'Input is an empty string'}
+            return Response(response, status=status.HTTP_204_NO_CONTENT)
         standardized_text = standardize_text(input_text)
         explainer = LimeTextExplainer(class_names=GRADE_CATEGORIES)
         pipeline = w2v_make_pipline(vectorizer, classifier)
@@ -68,6 +71,9 @@ class TfidfClassifier(APIView):
         tm_vectorizer = TrainedModel.objects.get(name='tfidf_vectorizer')
         vectorizer = tm_vectorizer.pickled_model
         input_text = request.data.get('description', 'ERROR')
+        if not input_text:
+            response = {'error': 'Input is an empty string'}
+            return Response(response, status=status.HTTP_404_NOT_FOUND)
         standardized_text = standardize_text(input_text)
         explainer = LimeTextExplainer(class_names=GRADE_CATEGORIES)
         c = make_pipeline(vectorizer, classifier)

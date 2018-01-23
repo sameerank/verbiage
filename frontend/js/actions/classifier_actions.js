@@ -1,4 +1,5 @@
 import * as ClassifierAPIUtil from '../util/classifier_api_util';
+import { waitingInput, clearInput } from './input_actions';
 
 export const RECEIVE_CLASSIFIER = 'RECEIVE_CLASSIFIER';
 export const CLEAR_CLASSIFIER = 'CLEAR_CLASSIFIER';
@@ -16,6 +17,15 @@ export const clearClassifier = () => ({
 export const createClassifier = payload => dispatch => (
     ClassifierAPIUtil.createClassifier(payload)
         .then(
-            classifier => dispatch(receiveClassifier(classifier))
+            classifier => {
+                dispatch(receiveClassifier(classifier));
+                dispatch(waitingInput(payload));
+            },
+            err => {
+                if (err.status === 404) {
+                    dispatch(clearClassifier());
+                    dispatch(clearInput());
+                }
+            }
         )
 );

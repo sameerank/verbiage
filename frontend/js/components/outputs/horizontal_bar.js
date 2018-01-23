@@ -5,8 +5,7 @@ import Chip from 'material-ui/Chip';
 import {XYPlot, makeWidthFlexible, XAxis, YAxis, HorizontalBarSeries, Hint} from 'react-vis';
 
 const styles = {
-    card: {
-        marginBottom: 5,
+    div: {
         textAlign: 'center'
     }
 }
@@ -23,27 +22,25 @@ class HorBarChart extends Component {
         const FlexibleXYPlot = makeWidthFlexible(XYPlot);
         let {hoveredCell} = this.state;
         return (
-            <Card style={styles.card}>
-                <CardHeader>{this.props.title}</CardHeader>
-                <CardText>
-                    <XYPlot
-                        margin={{left: 100, right: 100}}
-                        yType={'ordinal'}
-                        width={500}
-                        height={300} >
-                        <HorizontalBarSeries
-                            data={this.props.data}
-                            onValueMouseOver={v => this.setState({hoveredCell: v.x && v.y ? v : false})}
-                            onValueMouseOut={v => this.setState({hoveredCell: false})}
-                        />
-                        { hoveredCell ? <Hint value={hoveredCell}>
-                            <Chip><strong>{ hoveredCell.y } :</strong> { hoveredCell.x })</Chip>
-                        </ Hint> : null}
-                        <XAxis />
-                        <YAxis />
-                    </XYPlot>
-                </CardText>
-            </Card>
+            <div style={styles.div}>
+                <h2>{this.props.title}</h2>
+                <XYPlot
+                    margin={{left: 100, right: 100}}
+                    yType={'ordinal'}
+                    width={300}
+                    height={150} >
+                    <HorizontalBarSeries
+                        data={this.props.data}
+                        onValueMouseOver={v => this.setState({hoveredCell: v.x && v.y ? v : false})}
+                        onValueMouseOut={v => this.setState({hoveredCell: false})}
+                    />
+                    { hoveredCell ? <Hint value={hoveredCell}>
+                        <Chip><strong>{ hoveredCell.y } :</strong> { hoveredCell.x }</Chip>
+                    </ Hint> : null}
+                    <XAxis />
+                    <YAxis />
+                </XYPlot>
+            </div>
         )
     }
 }
