@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import BlurbInputContainer from './inputs/blurb_input_container';
 import BlurbOutputContainer from './outputs/blurb_output_container';
 import FeatureImportanceContainer from './outputs/feature_importance_container';
-import ConfusionMatrix from './explanations/confusion_matrix';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import SwipeableViews from 'react-swipeable-views';
-import {FETCHING, TYPING} from "../actions/input_actions";
 
 const styles = {
     card: {

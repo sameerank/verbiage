@@ -6817,7 +6817,7 @@ exports.default = EnhancedButton;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__plot_series_line_series_canvas__ = __webpack_require__(289);
 /* unused harmony reexport LineSeriesCanvas */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__plot_series_horizontal_bar_series__ = __webpack_require__(685);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__plot_series_horizontal_bar_series__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__plot_series_horizontal_bar_series__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__plot_series_horizontal_bar_series_canvas__ = __webpack_require__(686);
 /* unused harmony reexport HorizontalBarSeriesCanvas */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__plot_series_vertical_bar_series__ = __webpack_require__(687);
@@ -6847,7 +6847,7 @@ exports.default = EnhancedButton;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__plot_series_whisker_series__ = __webpack_require__(692);
 /* unused harmony reexport WhiskerSeries */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__plot_series_heatmap_series__ = __webpack_require__(693);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_18__plot_series_heatmap_series__["a"]; });
+/* unused harmony reexport HeatmapSeries */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__plot_series_contour_series__ = __webpack_require__(694);
 /* unused harmony reexport ContourSeries */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__plot_series_custom_svg_series__ = __webpack_require__(730);
@@ -6861,19 +6861,19 @@ exports.default = EnhancedButton;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__plot_series_line_mark_series_canvas__ = __webpack_require__(732);
 /* unused harmony reexport LineMarkSeriesCanvas */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__plot_hint__ = __webpack_require__(733);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_25__plot_hint__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_25__plot_hint__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__plot_borders__ = __webpack_require__(734);
 /* unused harmony reexport Borders */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__plot_crosshair__ = __webpack_require__(735);
 /* unused harmony reexport Crosshair */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__plot_xy_plot__ = __webpack_require__(33);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_28__plot_xy_plot__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_28__plot_xy_plot__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__plot_axis_decorative_axis__ = __webpack_require__(178);
 /* unused harmony reexport DecorativeAxis */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__plot_axis_x_axis__ = __webpack_require__(741);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_30__plot_axis_x_axis__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_30__plot_axis_x_axis__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__plot_axis_y_axis__ = __webpack_require__(745);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_31__plot_axis_y_axis__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_31__plot_axis_y_axis__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__plot_circular_grid_lines__ = __webpack_require__(746);
 /* unused harmony reexport CircularGridLines */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__plot_grid_lines__ = __webpack_require__(179);
@@ -47699,7 +47699,7 @@ class HorBarChart extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 this.props.title
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_3_react_vis__["e" /* XYPlot */],
+                __WEBPACK_IMPORTED_MODULE_3_react_vis__["d" /* XYPlot */],
                 {
                     margin: { left: 150, right: 150 },
                     yType: 'ordinal',
@@ -47707,13 +47707,13 @@ class HorBarChart extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     height: 150,
                     title: this.props.title
                 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["c" /* HorizontalBarSeries */], {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["b" /* HorizontalBarSeries */], {
                     data: this.props.data,
                     onValueMouseOver: v => this.setState({ hoveredCell: v.x && v.y ? v : false }),
                     onValueMouseOut: v => this.setState({ hoveredCell: false })
                 }),
                 hoveredCell ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_3_react_vis__["b" /* Hint */],
+                    __WEBPACK_IMPORTED_MODULE_3_react_vis__["a" /* Hint */],
                     { value: hoveredCell },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_2_material_ui_Chip___default.a,
@@ -47728,8 +47728,8 @@ class HorBarChart extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                         hoveredCell.x
                     )
                 ) : null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["d" /* XAxis */], { style: { fontSize: 15 } }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["f" /* YAxis */], { style: { fontSize: 15 } })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["c" /* XAxis */], { style: { fontSize: 15 } }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["e" /* YAxis */], { style: { fontSize: 15 } })
             )
         );
     }
@@ -74795,18 +74795,8 @@ exports.default = new Typography();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_blurb_input_container__ = __webpack_require__(516);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__outputs_blurb_output_container__ = __webpack_require__(562);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__outputs_feature_importance_container__ = __webpack_require__(794);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__explanations_confusion_matrix__ = __webpack_require__(795);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_material_ui_Card__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_material_ui_Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_material_ui_Card__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_material_ui_Tabs__ = __webpack_require__(796);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_material_ui_Tabs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_material_ui_Tabs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_swipeable_views__ = __webpack_require__(801);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_swipeable_views___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_swipeable_views__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__actions_input_actions__ = __webpack_require__(561);
-
-
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_Card__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_material_ui_Card__);
 
 
 
@@ -74847,13 +74837,13 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             'div',
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_5_material_ui_Card__["Card"],
+                __WEBPACK_IMPORTED_MODULE_4_material_ui_Card__["Card"],
                 { style: styles.card },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_Card__["CardTitle"], {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_material_ui_Card__["CardTitle"], {
                     title: 'VerbiAge',
                     subtitle: 'An app for helping tailor your book\'s description to the right K-12 age group.' }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_5_material_ui_Card__["CardText"],
+                    __WEBPACK_IMPORTED_MODULE_4_material_ui_Card__["CardText"],
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
@@ -89345,7 +89335,7 @@ HeatmapSeries.propTypes = _extends({}, __WEBPACK_IMPORTED_MODULE_3__abstract_ser
 
 HeatmapSeries.displayName = 'HeatmapSeries';
 
-/* harmony default export */ __webpack_exports__["a"] = (HeatmapSeries);
+/* unused harmony default export */ var _unused_webpack_default_export = (HeatmapSeries);
 
 /***/ }),
 /* 694 */
@@ -99084,36 +99074,7 @@ const mapDispatchToProps = dispatch => ({
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__feature_importance__["a" /* default */]));
 
 /***/ }),
-/* 795 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_vis__ = __webpack_require__(96);
-
-
-
-class ConfusionMatrix extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
-    render() {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_1_react_vis__["e" /* XYPlot */],
-            {
-                width: 300,
-                height: 300 },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_vis__["d" /* XAxis */], null),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_vis__["f" /* YAxis */], null),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_vis__["a" /* HeatmapSeries */], {
-                className: 'heatmap-series-example',
-                colorType: 'literal',
-                data: [{ color: "rgb(0, 0, 0.0)", x: 0, y: 0 }, { color: "rgb(0, 0, 34)", x: 1, y: 0 }, { color: "rgb(0, 0, 1)", x: 2, y: 0 }, { color: "rgb(0, 0, 0.0)", x: 3, y: 0 }, { color: "rgb(0, 0, 0.0)", x: 4, y: 0 }, { color: "rgb(0, 0, 23)", x: 0, y: 1 }, { color: "rgb(0, 0, 212)", x: 1, y: 1 }, { color: "rgb(0, 0, 165)", x: 2, y: 1 }, { color: "rgb(0, 0, 23)", x: 3, y: 1 }, { color: "rgb(0, 0, 7)", x: 4, y: 1 }, { color: "rgb(0, 0, 0)", x: 0, y: 2 }, { color: "rgb(0, 0, 177)", x: 1, y: 2 }, { color: "rgb(0, 0, 101)", x: 2, y: 2 }, { color: "rgb(0, 0, 122)", x: 3, y: 2 }, { color: "rgb(0, 0, 23)", x: 4, y: 2 }, { color: "rgb(0, 0, 0)", x: 0, y: 3 }, { color: "rgb(0, 0, 10)", x: 1, y: 3 }, { color: "rgb(0, 0, 123)", x: 2, y: 3 }, { color: "rgb(0, 0, 121)", x: 3, y: 3 }, { color: "rgb(0, 0, 113)", x: 4, y: 3 }, { color: "rgb(0, 0, 0.0)", x: 0, y: 4 }, { color: "rgb(0, 0, 4)", x: 1, y: 4 }, { color: "rgb(0, 0, 24)", x: 2, y: 4 }, { color: "rgb(0, 0, 119)", x: 3, y: 4 }, { color: "rgb(0, 0, 255)", x: 4, y: 4 }] })
-        );
-    }
-}
-
-/* unused harmony default export */ var _unused_webpack_default_export = (ConfusionMatrix);
-
-/***/ }),
+/* 795 */,
 /* 796 */
 /***/ (function(module, exports, __webpack_require__) {
 
