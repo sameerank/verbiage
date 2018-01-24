@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import 'react-vis/dist/style.css';
-import OutputBar from './ouput_bar'
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 import _ from 'lodash'
-import {XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, HorizontalBarSeries} from 'react-vis';
 import HorBarChart from './horizontal_bar';
 import ReactAnimatedEllipsis from 'react-animated-ellipsis';
-import { FETCHING, TYPING } from '../../actions/input_actions'
+import { FETCHING, TYPING } from '../../actions/input_actions';
+import CircularProgress from 'material-ui/CircularProgress';
 
 const styles = {
     div: {
@@ -28,14 +26,16 @@ const styles = {
 };
 class BlurbOutput extends Component {
 
-
     render () {
         if (_.includes([TYPING, FETCHING], this.props.input.type)) {
-            const convertTypeToText = {TYPING: "User is typing", FETCHING: "Fetching results"};
+            const convertTypeToText = {
+                TYPING: (<h3>User is typing</h3>),
+                FETCHING: (<div><h3>Fetching results</h3><br /><CircularProgress /></div>)
+            };
             return (
-            <Card style={styles.card}>
+            <Card style={styles.card} zDepth={5}>
                 <CardHeader style={{textAlign: 'center'}}>
-                    <h3>{ convertTypeToText[this.props.input.type] }</h3>
+                    { convertTypeToText[this.props.input.type] }
                 </CardHeader>
             </Card>);
         }
@@ -47,24 +47,29 @@ class BlurbOutput extends Component {
                 })
             );
             return (
-                <Card style={styles.card} zDepth={1}>
+                <Card style={styles.card} zDepth={5}>
                     <CardText>
-                        <div style={styles.rowDiv}>
+                        <div style={styles.colDiv}>
                             <div style={styles.div}>
                                 <h3>This book sounds like it should be read by students in these grades:</h3>
                                 <h1>{this.props.classifier.final_prediction}</h1>
                             </div>
-                            <HorBarChart data={predict_probas} title={'Prediction probabilities'} />
+                            <div style={styles.rowDiv}>
+                                <div style={{flex: 1}} />
+                                <HorBarChart data={predict_probas} title={'Prediction probabilities'} />
+                                <div style={{flex: 1}} />
+                            </div>
                         </div>
                     </CardText>
                 </Card>);
         }
         return (
-            <Card style={styles.card} zDepth={1}>
+            <Card style={styles.card} zDepth={5}>
                 <CardHeader style={{textAlign: 'center'}}>
-                    <h3>Waiting for user input <ReactAnimatedEllipsis /></h3>
+                    <h3>Waiting for user input <ReactAnimatedEllipsis style={{fontSize: "3rem"}} /></h3>
                 </CardHeader>
-            </Card>);
+            </Card>
+        );
     }
 }
 

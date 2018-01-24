@@ -6,6 +6,7 @@ import ConfusionMatrix from './explanations/confusion_matrix';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
+import {FETCHING, TYPING} from "../actions/input_actions";
 
 const styles = {
     card: {
@@ -34,18 +35,9 @@ const styles = {
 };
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { slideIndex: 0 };
-    }
-
-    handleChange(value) {
-        this.setState({
-            slideIndex: value,
-        });
-    }
 
     render () {
+        console.log();
         return (
             <div>
                 <Card style={styles.card}>

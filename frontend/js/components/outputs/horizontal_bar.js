@@ -21,12 +21,14 @@ class HorBarChart extends Component {
         let {hoveredCell} = this.state;
         return (
             <div style={styles.div}>
-                <h2>{this.props.title}</h2>
+                <h4>{this.props.title}</h4>
                 <XYPlot
-                    margin={{left: 100, right: 100}}
+                    margin={{left: 150, right: 150}}
                     yType={'ordinal'}
-                    width={300}
-                    height={150} >
+                    width={500}
+                    height={150}
+                    title={this.props.title}
+                >
                     <HorizontalBarSeries
                         data={this.props.data}
                         onValueMouseOver={v => this.setState({hoveredCell: v.x && v.y ? v : false})}
@@ -35,8 +37,8 @@ class HorBarChart extends Component {
                     { hoveredCell ? <Hint value={hoveredCell}>
                         <Chip><strong>{ hoveredCell.y } :</strong> { hoveredCell.x }</Chip>
                     </ Hint> : null}
-                    <XAxis />
-                    <YAxis />
+                    <XAxis style={{fontSize: 15}} />
+                    <YAxis style={{fontSize: 15}} />
                 </XYPlot>
             </div>
         )

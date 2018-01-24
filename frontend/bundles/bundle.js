@@ -5911,11 +5911,11 @@ const clearClassifier = () => ({
 
 const createClassifier = payload => dispatch => __WEBPACK_IMPORTED_MODULE_0__util_classifier_api_util__["a" /* createClassifier */](payload).then(classifier => {
     dispatch(receiveClassifier(classifier));
-    dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__input_actions__["g" /* waitingInput */])(payload));
+    dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__input_actions__["i" /* waitingInput */])(payload));
 }, err => {
     if (err.status === 404) {
         dispatch(clearClassifier());
-        dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__input_actions__["d" /* clearInput */])());
+        dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__input_actions__["e" /* clearInput */])());
     }
 });
 /* harmony export (immutable) */ __webpack_exports__["d"] = createClassifier;
@@ -42326,58 +42326,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 239 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_AppBar__ = __webpack_require__(568);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_AppBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_material_ui_AppBar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_IconButton__ = __webpack_require__(140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_IconButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_material_ui_IconButton__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_svg_icons_navigation_close__ = __webpack_require__(571);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_svg_icons_navigation_close___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_svg_icons_navigation_close__);
-
-
-
-
-
-function handleClick() {
-    alert('onClick triggered on the title component');
-}
-
-const styles = {
-    title: {
-        cursor: 'pointer'
-    }
-};
-
-class OutputBar extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
-    handleClick() {
-        this.props.clearClassifier();
-    }
-
-    render() {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_AppBar___default.a, {
-            title: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'span',
-                { style: styles.title },
-                'Classification Results'
-            ),
-            iconElementLeft: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_2_material_ui_IconButton___default.a,
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_svg_icons_navigation_close___default.a, null)
-            ),
-            onLeftIconButtonClick: e => this.handleClick(e)
-        });
-    }
-}
-
-/* unused harmony default export */ var _unused_webpack_default_export = (OutputBar);
-
-/***/ }),
+/* 239 */,
 /* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -47745,17 +47694,19 @@ class HorBarChart extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             'div',
             { style: styles.div },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'h2',
+                'h4',
                 null,
                 this.props.title
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_3_react_vis__["e" /* XYPlot */],
                 {
-                    margin: { left: 100, right: 100 },
+                    margin: { left: 150, right: 150 },
                     yType: 'ordinal',
-                    width: 300,
-                    height: 150 },
+                    width: 500,
+                    height: 150,
+                    title: this.props.title
+                },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["c" /* HorizontalBarSeries */], {
                     data: this.props.data,
                     onValueMouseOver: v => this.setState({ hoveredCell: v.x && v.y ? v : false }),
@@ -47777,8 +47728,8 @@ class HorBarChart extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                         hoveredCell.x
                     )
                 ) : null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["d" /* XAxis */], null),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["f" /* YAxis */], null)
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["d" /* XAxis */], { style: { fontSize: 15 } }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_vis__["f" /* YAxis */], { style: { fontSize: 15 } })
             )
         );
     }
@@ -47795,21 +47746,14 @@ class HorBarChart extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_vis_dist_style_css__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_vis_dist_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_vis_dist_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ouput_bar__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__(142);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_vis__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__horizontal_bar__ = __webpack_require__(322);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_material_ui_Tabs__ = __webpack_require__(796);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_material_ui_Tabs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_material_ui_Tabs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_swipeable_views__ = __webpack_require__(801);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_swipeable_views___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_swipeable_views__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__actions_input_actions__ = __webpack_require__(561);
-
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__horizontal_bar__ = __webpack_require__(322);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_Tabs__ = __webpack_require__(796);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_Tabs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_material_ui_Tabs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_swipeable_views__ = __webpack_require__(801);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_swipeable_views___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_swipeable_views__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_input_actions__ = __webpack_require__(561);
 
 
 
@@ -47826,12 +47770,25 @@ const styles = {
         flex: '1 1 100%',
         display: 'flex',
         flexDirection: 'column'
+    },
+    rowDiv: {
+        display: 'flex',
+        flexDirection: 'row'
     }
 };
 class FeatureImportance extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     constructor(props) {
         super(props);
         this.state = { slideIndex: 0 };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.isUndefined(nextProps.input.age)) {
+            this.setState({ slideIndex: nextProps.input.age });
+        } else if (!__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.isUndefined(nextProps.classifier.final_prediction)) {
+            const newSlideIndex = nextProps.classifier.ordered_class_names.indexOf(nextProps.classifier.final_prediction);
+            this.setState({ slideIndex: newSlideIndex });
+        }
     }
 
     handleChange(value) {
@@ -47841,49 +47798,51 @@ class FeatureImportance extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     }
 
     render() {
-        if (__WEBPACK_IMPORTED_MODULE_4_lodash___default.a.includes([__WEBPACK_IMPORTED_MODULE_9__actions_input_actions__["b" /* TYPING */], __WEBPACK_IMPORTED_MODULE_9__actions_input_actions__["a" /* FETCHING */]], this.props.input.type)) {
-            const convertTypeToText = { TYPING: "User is typing", FETCHING: "Fetching results" };
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-                { style: styles.card },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardHeader"],
-                    { style: { textAlign: 'center' } },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'h3',
-                        null,
-                        convertTypeToText[this.props.input.type]
-                    )
-                )
-            );
+        if (__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.includes([__WEBPACK_IMPORTED_MODULE_6__actions_input_actions__["c" /* TYPING */], __WEBPACK_IMPORTED_MODULE_6__actions_input_actions__["a" /* FETCHING */]], this.props.input.type)) {
+            return '';
         }
-        if (!__WEBPACK_IMPORTED_MODULE_4_lodash___default.a.isEmpty(this.props.classifier)) {
+        if (!__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.isEmpty(this.props.classifier)) {
             const as_lists = this.props.classifier.ordered_class_names.map(k => ({
                 title: k,
-                data: this.props.classifier.as_list[k].map(wrd_ind => ({ x: wrd_ind[1], y: wrd_ind[0] })) }));
+                data: this.props.classifier.as_list[k].map(wrd_ind => ({ x: wrd_ind[1], y: wrd_ind[0] })),
+                highlighted_html: this.props.classifier.highlighted_html[k]
+            }));
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-                { style: styles.card },
+                null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_7_material_ui_Tabs__["Tabs"],
-                    {
-                        onChange: v => this.handleChange(v),
-                        value: this.state.slideIndex },
-                    as_lists.map((as_list, idx) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_material_ui_Tabs__["Tab"], { label: as_list.title, value: idx }))
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_8_react_swipeable_views___default.a,
-                    {
-                        index: this.state.slideIndex,
-                        onChangeIndex: v => this.handleChange(v) },
-                    as_lists.map((as_list, idx) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardText"],
-                        { key: idx },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__horizontal_bar__["a" /* default */], {
-                            data: as_list.data,
-                            title: 'Feature importance for the ' + as_list.title + ' range'
-                        })
-                    ))
+                    __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardText"],
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
+                        { style: styles.card, zDepth: 5 },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_4_material_ui_Tabs__["Tabs"],
+                            {
+                                onChange: v => this.handleChange(v),
+                                value: this.state.slideIndex },
+                            as_lists.map((as_list, idx) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_material_ui_Tabs__["Tab"], { label: as_list.title, key: idx, value: idx }))
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_5_react_swipeable_views___default.a,
+                            {
+                                index: this.state.slideIndex,
+                                onChangeIndex: v => this.handleChange(v) },
+                            as_lists.map((as_list, idx) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardText"],
+                                { key: idx, style: styles.rowDiv },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__horizontal_bar__["a" /* default */], {
+                                    data: as_list.data,
+                                    title: 'Feature importance in the ' + as_list.title + ' grade range'
+                                }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { style: { marginLeft: 10 } },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h3', { dangerouslySetInnerHTML: { __html: as_list.highlighted_html } })
+                                )
+                            ))
+                        )
+                    )
                 )
             );
         }
@@ -68049,12 +68008,15 @@ module.exports = isIterateeCall;
 const inputReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
-        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["c" /* WAITING */]:
+        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["d" /* WAITING */]:
             return __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, state, action);
         case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["a" /* FETCHING */]:
             return __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, state, action);
-        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["b" /* TYPING */]:
+        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["c" /* TYPING */]:
             return __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, state, action);
+        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["b" /* SET_AGE */]:
+            const newAge = action.age;
+            return __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, state, newAge);
         default:
             return state;
     }
@@ -68072,11 +68034,14 @@ const inputReducer = (state = {}, action) => {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_styles_baseThemes_lightBaseTheme__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_styles_baseThemes_lightBaseTheme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles_baseThemes_lightBaseTheme__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_styles_MuiThemeProvider__ = __webpack_require__(439);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_styles_MuiThemeProvider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_styles_MuiThemeProvider__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_styles_getMuiTheme__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_styles_getMuiTheme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_material_ui_styles_getMuiTheme__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_styles_baseThemes_darkBaseTheme__ = __webpack_require__(866);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_styles_baseThemes_darkBaseTheme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_styles_baseThemes_darkBaseTheme__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_styles_MuiThemeProvider__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_styles_MuiThemeProvider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_material_ui_styles_MuiThemeProvider__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_material_ui_styles_getMuiTheme__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_material_ui_styles_getMuiTheme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_material_ui_styles_getMuiTheme__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app__ = __webpack_require__(515);
+
 
 
 
@@ -68085,12 +68050,12 @@ const inputReducer = (state = {}, action) => {
 
 
 const Root = ({ store }) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_3_material_ui_styles_MuiThemeProvider___default.a,
-    { muiTheme: __WEBPACK_IMPORTED_MODULE_4_material_ui_styles_getMuiTheme___default()(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles_baseThemes_lightBaseTheme___default.a) },
+    __WEBPACK_IMPORTED_MODULE_4_material_ui_styles_MuiThemeProvider___default.a,
+    { muiTheme: __WEBPACK_IMPORTED_MODULE_5_material_ui_styles_getMuiTheme___default()(__WEBPACK_IMPORTED_MODULE_3_material_ui_styles_baseThemes_darkBaseTheme___default.a) },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_react_redux__["a" /* Provider */],
         { store: store },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__app__["a" /* default */], null)
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__app__["a" /* default */], null)
     )
 );
 
@@ -74837,6 +74802,8 @@ exports.default = new Typography();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_material_ui_Tabs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_material_ui_Tabs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_swipeable_views__ = __webpack_require__(801);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_swipeable_views___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_swipeable_views__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__actions_input_actions__ = __webpack_require__(561);
+
 
 
 
@@ -74873,18 +74840,9 @@ const styles = {
 };
 
 class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
-    constructor(props) {
-        super(props);
-        this.state = { slideIndex: 0 };
-    }
-
-    handleChange(value) {
-        this.setState({
-            slideIndex: value
-        });
-    }
 
     render() {
+        console.log();
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             null,
@@ -74936,9 +74894,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     createClassifier: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_classifier_actions__["d" /* createClassifier */])(payload)),
     clearClassifier: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_classifier_actions__["c" /* clearClassifier */])()),
-    typingInput: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["f" /* typingInput */])(payload)),
-    fetchingInput: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["e" /* fetchingInput */])(payload)),
-    clearInput: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["d" /* clearInput */])())
+    typingInput: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["h" /* typingInput */])(payload)),
+    fetchingInput: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["f" /* fetchingInput */])(payload)),
+    clearInput: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["e" /* clearInput */])()),
+    setAge: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["g" /* setAge */])(payload))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__blurb_input__["a" /* default */]));
@@ -74984,9 +74943,6 @@ const styles = {
     button: {
         marginTop: 10,
         marginRight: 10
-    },
-    selectWidth: {
-        width: 150
     }
 };
 
@@ -75013,6 +74969,8 @@ class BlurbInput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
     handleSelectChange(event, index, value) {
         console.log(event, index, value);
+        const payload = { age: value };
+        this.props.setAge(payload);
     }
 
     handleClearClick(event) {
@@ -75023,7 +74981,7 @@ class BlurbInput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     render() {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-            { style: styles.card, zDepth: 1 },
+            { style: styles.card, zDepth: 5 },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'form',
                 { style: styles.div },
@@ -75032,22 +74990,25 @@ class BlurbInput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     floatingLabelText: 'Book description',
                     multiLine: true,
                     fullWidth: true,
-                    rows: 5,
+                    rows: 3,
                     value: this.props.input.description,
+                    disabled: this.props.input.type === __WEBPACK_IMPORTED_MODULE_7__actions_input_actions__["a" /* FETCHING */],
                     onChange: e => this.handleTextChange(e)
                 }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_4_material_ui_SelectField___default.a,
                     {
-                        floatingLabelText: 'Intended Age',
-                        value: this.state.selectValue,
-                        onChange: this.handleSelectChange,
-                        style: styles.selectWidth },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 1, primaryText: 'Preschool/Pre-K' }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 2, primaryText: 'K-2' }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 3, primaryText: '3-5' }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 4, primaryText: '6-8' }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 5, primaryText: '9-12' })
+                        floatingLabelText: 'Intended Age (optional)',
+                        value: this.props.input.age,
+                        onChange: (e, i, v) => this.handleSelectChange(e, i, v),
+                        style: styles.selectWidth,
+                        disabled: this.props.input.type === __WEBPACK_IMPORTED_MODULE_7__actions_input_actions__["a" /* FETCHING */]
+                    },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 0, primaryText: 'Preschool/Pre-K' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 1, primaryText: 'K-2' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 2, primaryText: '3-5' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 3, primaryText: '6-8' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 4, primaryText: '9-12' })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default.a, { style: styles.button,
@@ -81058,41 +81019,51 @@ exports.default = RaisedButton;
 
 "use strict";
 const WAITING = 'WAITING';
-/* harmony export (immutable) */ __webpack_exports__["c"] = WAITING;
+/* harmony export (immutable) */ __webpack_exports__["d"] = WAITING;
 
 const TYPING = 'TYPING';
-/* harmony export (immutable) */ __webpack_exports__["b"] = TYPING;
+/* harmony export (immutable) */ __webpack_exports__["c"] = TYPING;
 
 const FETCHING = 'FETCHING';
 /* harmony export (immutable) */ __webpack_exports__["a"] = FETCHING;
+
+const SET_AGE = 'SET_AGE';
+/* harmony export (immutable) */ __webpack_exports__["b"] = SET_AGE;
 
 
 const waitingInput = input => ({
     type: WAITING,
     description: input.description
 });
-/* harmony export (immutable) */ __webpack_exports__["g"] = waitingInput;
+/* harmony export (immutable) */ __webpack_exports__["i"] = waitingInput;
 
 
 const typingInput = input => ({
     type: TYPING,
     description: input.description
 });
-/* harmony export (immutable) */ __webpack_exports__["f"] = typingInput;
+/* harmony export (immutable) */ __webpack_exports__["h"] = typingInput;
 
 
 const fetchingInput = input => ({
     type: FETCHING,
     description: input.description
 });
-/* harmony export (immutable) */ __webpack_exports__["e"] = fetchingInput;
+/* harmony export (immutable) */ __webpack_exports__["f"] = fetchingInput;
 
 
 const clearInput = () => ({
     type: WAITING,
     description: ''
 });
-/* harmony export (immutable) */ __webpack_exports__["d"] = clearInput;
+/* harmony export (immutable) */ __webpack_exports__["e"] = clearInput;
+
+
+const setAge = age => ({
+    type: SET_AGE,
+    age
+});
+/* harmony export (immutable) */ __webpack_exports__["g"] = setAge;
 
 
 /***/ }),
@@ -81129,18 +81100,14 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_vis_dist_style_css__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_vis_dist_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_vis_dist_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ouput_bar__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__(142);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_vis__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__horizontal_bar__ = __webpack_require__(322);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_animated_ellipsis__ = __webpack_require__(847);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_animated_ellipsis___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_animated_ellipsis__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__actions_input_actions__ = __webpack_require__(561);
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__horizontal_bar__ = __webpack_require__(322);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_animated_ellipsis__ = __webpack_require__(847);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_animated_ellipsis___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_animated_ellipsis__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions_input_actions__ = __webpack_require__(561);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_material_ui_CircularProgress__ = __webpack_require__(867);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_material_ui_CircularProgress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_material_ui_CircularProgress__);
 
 
 
@@ -81170,36 +81137,49 @@ const styles = {
 class BlurbOutput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
     render() {
-        if (__WEBPACK_IMPORTED_MODULE_4_lodash___default.a.includes([__WEBPACK_IMPORTED_MODULE_8__actions_input_actions__["b" /* TYPING */], __WEBPACK_IMPORTED_MODULE_8__actions_input_actions__["a" /* FETCHING */]], this.props.input.type)) {
-            const convertTypeToText = { TYPING: "User is typing", FETCHING: "Fetching results" };
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-                { style: styles.card },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardHeader"],
-                    { style: { textAlign: 'center' } },
+        if (__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.includes([__WEBPACK_IMPORTED_MODULE_5__actions_input_actions__["c" /* TYPING */], __WEBPACK_IMPORTED_MODULE_5__actions_input_actions__["a" /* FETCHING */]], this.props.input.type)) {
+            const convertTypeToText = {
+                TYPING: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h3',
+                    null,
+                    'User is typing'
+                ),
+                FETCHING: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h3',
                         null,
-                        convertTypeToText[this.props.input.type]
-                    )
+                        'Fetching results'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_material_ui_CircularProgress___default.a, null)
+                )
+            };
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
+                { style: styles.card, zDepth: 5 },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardHeader"],
+                    { style: { textAlign: 'center' } },
+                    convertTypeToText[this.props.input.type]
                 )
             );
         }
-        if (!__WEBPACK_IMPORTED_MODULE_4_lodash___default.a.isEmpty(this.props.classifier)) {
+        if (!__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.isEmpty(this.props.classifier)) {
             const predict_probas = this.props.classifier.ordered_class_names.map(k => ({
                 x: this.props.classifier.predict_probas[k],
                 y: k
             }));
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-                { style: styles.card, zDepth: 1 },
+                { style: styles.card, zDepth: 5 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardText"],
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { style: styles.rowDiv },
+                        { style: styles.colDiv },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
                             { style: styles.div },
@@ -81214,14 +81194,20 @@ class BlurbOutput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                                 this.props.classifier.final_prediction
                             )
                         ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__horizontal_bar__["a" /* default */], { data: predict_probas, title: 'Prediction probabilities' })
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { style: styles.rowDiv },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { style: { flex: 1 } }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__horizontal_bar__["a" /* default */], { data: predict_probas, title: 'Prediction probabilities' }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { style: { flex: 1 } })
+                        )
                     )
                 )
             );
         }
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-            { style: styles.card, zDepth: 1 },
+            { style: styles.card, zDepth: 5 },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardHeader"],
                 { style: { textAlign: 'center' } },
@@ -81229,7 +81215,7 @@ class BlurbOutput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     'h3',
                     null,
                     'Waiting for user input ',
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_animated_ellipsis___default.a, null)
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_animated_ellipsis___default.a, { style: { fontSize: "3rem" } })
                 )
             )
         );
@@ -81802,493 +81788,10 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 568 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
-
-var _AppBar = __webpack_require__(569);
-
-var _AppBar2 = _interopRequireDefault(_AppBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _AppBar2.default;
-
-/***/ }),
-/* 569 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends2 = __webpack_require__(13);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _keys = __webpack_require__(137);
-
-var _keys2 = _interopRequireDefault(_keys);
-
-var _objectWithoutProperties2 = __webpack_require__(12);
-
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
-
-var _getPrototypeOf = __webpack_require__(6);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(4);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(7);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(8);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(9);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-exports.getStyles = getStyles;
-
-var _simpleAssign = __webpack_require__(5);
-
-var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _IconButton = __webpack_require__(140);
-
-var _IconButton2 = _interopRequireDefault(_IconButton);
-
-var _menu = __webpack_require__(570);
-
-var _menu2 = _interopRequireDefault(_menu);
-
-var _Paper = __webpack_require__(138);
-
-var _Paper2 = _interopRequireDefault(_Paper);
-
-var _propTypes3 = __webpack_require__(139);
-
-var _propTypes4 = _interopRequireDefault(_propTypes3);
-
-var _warning = __webpack_require__(23);
-
-var _warning2 = _interopRequireDefault(_warning);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function getStyles(props, context) {
-  var _context$muiTheme = context.muiTheme,
-      appBar = _context$muiTheme.appBar,
-      iconButtonSize = _context$muiTheme.button.iconButtonSize,
-      zIndex = _context$muiTheme.zIndex;
-
-
-  var flatButtonSize = 36;
-
-  var styles = {
-    root: {
-      position: 'relative',
-      zIndex: zIndex.appBar,
-      width: '100%',
-      display: 'flex',
-      backgroundColor: appBar.color,
-      paddingLeft: appBar.padding,
-      paddingRight: appBar.padding
-    },
-    title: {
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      margin: 0,
-      paddingTop: 0,
-      letterSpacing: 0,
-      fontSize: 24,
-      fontWeight: appBar.titleFontWeight,
-      color: appBar.textColor,
-      height: appBar.height,
-      lineHeight: appBar.height + 'px'
-    },
-    mainElement: {
-      boxFlex: 1,
-      flex: '1'
-    },
-    iconButtonStyle: {
-      marginTop: (appBar.height - iconButtonSize) / 2,
-      marginRight: 8,
-      marginLeft: -16
-    },
-    iconButtonIconStyle: {
-      fill: appBar.textColor,
-      color: appBar.textColor
-    },
-    flatButton: {
-      color: appBar.textColor,
-      marginTop: (iconButtonSize - flatButtonSize) / 2 + 1
-    }
-  };
-
-  return styles;
-}
-
-var AppBar = function (_Component) {
-  (0, _inherits3.default)(AppBar, _Component);
-
-  function AppBar() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, AppBar);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AppBar.__proto__ || (0, _getPrototypeOf2.default)(AppBar)).call.apply(_ref, [this].concat(args))), _this), _this.handleClickLeftIconButton = function (event) {
-      if (_this.props.onLeftIconButtonClick) {
-        _this.props.onLeftIconButtonClick(event);
-      }
-    }, _this.handleClickRightIconButton = function (event) {
-      if (_this.props.onRightIconButtonClick) {
-        _this.props.onRightIconButtonClick(event);
-      }
-    }, _this.handleTitleClick = function (event) {
-      if (_this.props.onTitleClick) {
-        _this.props.onTitleClick(event);
-      }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-  }
-
-  (0, _createClass3.default)(AppBar, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      process.env.NODE_ENV !== "production" ? (0, _warning2.default)(!this.props.iconElementLeft || !this.props.iconClassNameLeft, 'Material-UI: Properties iconElementLeft\n      and iconClassNameLeft cannot be simultaneously defined. Please use one or the other.') : void 0;
-
-      process.env.NODE_ENV !== "production" ? (0, _warning2.default)(!this.props.iconElementRight || !this.props.iconClassNameRight, 'Material-UI: Properties iconElementRight\n      and iconClassNameRight cannot be simultaneously defined. Please use one or the other.') : void 0;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          title = _props.title,
-          titleStyle = _props.titleStyle,
-          iconStyleLeft = _props.iconStyleLeft,
-          iconStyleRight = _props.iconStyleRight,
-          onTitleClick = _props.onTitleClick,
-          showMenuIconButton = _props.showMenuIconButton,
-          iconElementLeft = _props.iconElementLeft,
-          iconElementRight = _props.iconElementRight,
-          iconClassNameLeft = _props.iconClassNameLeft,
-          iconClassNameRight = _props.iconClassNameRight,
-          onLeftIconButtonClick = _props.onLeftIconButtonClick,
-          onRightIconButtonClick = _props.onRightIconButtonClick,
-          className = _props.className,
-          style = _props.style,
-          zDepth = _props.zDepth,
-          children = _props.children,
-          other = (0, _objectWithoutProperties3.default)(_props, ['title', 'titleStyle', 'iconStyleLeft', 'iconStyleRight', 'onTitleClick', 'showMenuIconButton', 'iconElementLeft', 'iconElementRight', 'iconClassNameLeft', 'iconClassNameRight', 'onLeftIconButtonClick', 'onRightIconButtonClick', 'className', 'style', 'zDepth', 'children']);
-      var prepareStyles = this.context.muiTheme.prepareStyles;
-
-      var styles = getStyles(this.props, this.context);
-
-      var menuElementLeft = void 0;
-      var menuElementRight = void 0;
-
-      // If the title is a string, wrap in an h1 tag.
-      // If not, wrap in a div tag.
-      var titleComponent = typeof title === 'string' || title instanceof String ? 'h1' : 'div';
-
-      var titleElement = _react2.default.createElement(titleComponent, {
-        onClick: this.handleTitleClick,
-        style: prepareStyles((0, _simpleAssign2.default)(styles.title, styles.mainElement, titleStyle))
-      }, title);
-
-      var iconLeftStyle = (0, _simpleAssign2.default)({}, styles.iconButtonStyle, iconStyleLeft);
-
-      if (showMenuIconButton) {
-        if (iconElementLeft) {
-          var iconElementLeftProps = {};
-
-          if (iconElementLeft.type.muiName === 'IconButton') {
-            var iconElemLeftChildren = iconElementLeft.props.children;
-            var iconButtonIconStyle = !(iconElemLeftChildren && iconElemLeftChildren.props && iconElemLeftChildren.props.color) ? styles.iconButtonIconStyle : null;
-
-            iconElementLeftProps.iconStyle = (0, _simpleAssign2.default)({}, iconButtonIconStyle, iconElementLeft.props.iconStyle);
-          }
-
-          if (!iconElementLeft.props.onClick && this.props.onLeftIconButtonClick) {
-            iconElementLeftProps.onClick = this.handleClickLeftIconButton;
-          }
-
-          menuElementLeft = _react2.default.createElement(
-            'div',
-            { style: prepareStyles(iconLeftStyle) },
-            (0, _keys2.default)(iconElementLeftProps).length > 0 ? (0, _react.cloneElement)(iconElementLeft, iconElementLeftProps) : iconElementLeft
-          );
-        } else {
-          menuElementLeft = _react2.default.createElement(
-            _IconButton2.default,
-            {
-              style: iconLeftStyle,
-              iconStyle: styles.iconButtonIconStyle,
-              iconClassName: iconClassNameLeft,
-              onClick: this.handleClickLeftIconButton
-            },
-            iconClassNameLeft ? '' : _react2.default.createElement(_menu2.default, { style: (0, _simpleAssign2.default)({}, styles.iconButtonIconStyle) })
-          );
-        }
-      }
-
-      var iconRightStyle = (0, _simpleAssign2.default)({}, styles.iconButtonStyle, {
-        marginRight: -16,
-        marginLeft: 'auto'
-      }, iconStyleRight);
-
-      if (iconElementRight) {
-        var iconElementRightProps = {};
-
-        switch (iconElementRight.type.muiName) {
-          case 'IconMenu':
-          case 'IconButton':
-            var iconElemRightChildren = iconElementRight.props.children;
-            var _iconButtonIconStyle = !(iconElemRightChildren && iconElemRightChildren.props && iconElemRightChildren.props.color) ? styles.iconButtonIconStyle : null;
-
-            iconElementRightProps.iconStyle = (0, _simpleAssign2.default)({}, _iconButtonIconStyle, iconElementRight.props.iconStyle);
-            break;
-
-          case 'FlatButton':
-            iconElementRightProps.style = (0, _simpleAssign2.default)({}, styles.flatButton, iconElementRight.props.style);
-            break;
-
-          default:
-        }
-
-        if (!iconElementRight.props.onClick && this.props.onRightIconButtonClick) {
-          iconElementRightProps.onClick = this.handleClickRightIconButton;
-        }
-
-        menuElementRight = _react2.default.createElement(
-          'div',
-          { style: prepareStyles(iconRightStyle) },
-          (0, _keys2.default)(iconElementRightProps).length > 0 ? (0, _react.cloneElement)(iconElementRight, iconElementRightProps) : iconElementRight
-        );
-      } else if (iconClassNameRight) {
-        menuElementRight = _react2.default.createElement(_IconButton2.default, {
-          style: iconRightStyle,
-          iconStyle: styles.iconButtonIconStyle,
-          iconClassName: iconClassNameRight,
-          onClick: this.handleClickRightIconButton
-        });
-      }
-
-      return _react2.default.createElement(
-        _Paper2.default,
-        (0, _extends3.default)({}, other, {
-          rounded: false,
-          className: className,
-          style: (0, _simpleAssign2.default)({}, styles.root, style),
-          zDepth: zDepth
-        }),
-        menuElementLeft,
-        titleElement,
-        menuElementRight,
-        children
-      );
-    }
-  }]);
-  return AppBar;
-}(_react.Component);
-
-AppBar.muiName = 'AppBar';
-AppBar.defaultProps = {
-  showMenuIconButton: true,
-  title: '',
-  zDepth: 1
-};
-AppBar.contextTypes = {
-  muiTheme: _propTypes2.default.object.isRequired
-};
-AppBar.propTypes = process.env.NODE_ENV !== "production" ? {
-  /**
-   * Can be used to render a tab inside an app bar for instance.
-   */
-  children: _propTypes2.default.node,
-  /**
-   * Applied to the app bar's root element.
-   */
-  className: _propTypes2.default.string,
-  /**
-   * The classname of the icon on the left of the app bar.
-   * If you are using a stylesheet for your icons, enter the class name for the icon to be used here.
-   */
-  iconClassNameLeft: _propTypes2.default.string,
-  /**
-   * Similiar to the iconClassNameLeft prop except that
-   * it applies to the icon displayed on the right of the app bar.
-   */
-  iconClassNameRight: _propTypes2.default.string,
-  /**
-   * The custom element to be displayed on the left side of the
-   * app bar such as an SvgIcon.
-   */
-  iconElementLeft: _propTypes2.default.element,
-  /**
-   * Similiar to the iconElementLeft prop except that this element is displayed on the right of the app bar.
-   */
-  iconElementRight: _propTypes2.default.element,
-  /**
-   * Override the inline-styles of the element displayed on the left side of the app bar.
-   */
-  iconStyleLeft: _propTypes2.default.object,
-  /**
-   * Override the inline-styles of the element displayed on the right side of the app bar.
-   */
-  iconStyleRight: _propTypes2.default.object,
-  /**
-   * Callback function for when the left icon is selected via a click.
-   *
-   * @param {object} event Click event targeting the left `IconButton`.
-   */
-  onLeftIconButtonClick: _propTypes2.default.func,
-  /**
-   * Callback function for when the right icon is selected via a click.
-   *
-   * @param {object} event Click event targeting the right `IconButton`.
-   */
-  onRightIconButtonClick: _propTypes2.default.func,
-  /**
-   * Callback function for when the title text is selected via a click.
-   *
-   * @param {object} event Click event targeting the `title` node.
-   */
-  onTitleClick: _propTypes2.default.func,
-  /**
-   * Determines whether or not to display the Menu icon next to the title.
-   * Setting this prop to false will hide the icon.
-   */
-  showMenuIconButton: _propTypes2.default.bool,
-  /**
-   * Override the inline-styles of the root element.
-   */
-  style: _propTypes2.default.object,
-  /**
-   * The title to display on the app bar.
-   */
-  title: _propTypes2.default.node,
-  /**
-   * Override the inline-styles of the app bar's title element.
-   */
-  titleStyle: _propTypes2.default.object,
-  /**
-   * The zDepth of the component.
-   * The shadow of the app bar is also dependent on this property.
-   */
-  zDepth: _propTypes4.default.zDepth
-} : {};
-exports.default = AppBar;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 570 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _pure = __webpack_require__(66);
-
-var _pure2 = _interopRequireDefault(_pure);
-
-var _SvgIcon = __webpack_require__(67);
-
-var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var NavigationMenu = function NavigationMenu(props) {
-  return _react2.default.createElement(
-    _SvgIcon2.default,
-    props,
-    _react2.default.createElement('path', { d: 'M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z' })
-  );
-};
-NavigationMenu = (0, _pure2.default)(NavigationMenu);
-NavigationMenu.displayName = 'NavigationMenu';
-NavigationMenu.muiName = 'SvgIcon';
-
-exports.default = NavigationMenu;
-
-/***/ }),
-/* 571 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _pure = __webpack_require__(66);
-
-var _pure2 = _interopRequireDefault(_pure);
-
-var _SvgIcon = __webpack_require__(67);
-
-var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var NavigationClose = function NavigationClose(props) {
-  return _react2.default.createElement(
-    _SvgIcon2.default,
-    props,
-    _react2.default.createElement('path', { d: 'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' })
-  );
-};
-NavigationClose = (0, _pure2.default)(NavigationClose);
-NavigationClose.displayName = 'NavigationClose';
-NavigationClose.muiName = 'SvgIcon';
-
-exports.default = NavigationClose;
-
-/***/ }),
+/* 568 */,
+/* 569 */,
+/* 570 */,
+/* 571 */,
 /* 572 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -109855,6 +109358,348 @@ function onlyChild(children) {
 }
 
 module.exports = onlyChild;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ }),
+/* 865 */,
+/* 866 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _colors = __webpack_require__(119);
+
+var _colorManipulator = __webpack_require__(91);
+
+var _spacing = __webpack_require__(438);
+
+var _spacing2 = _interopRequireDefault(_spacing);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  spacing: _spacing2.default,
+  fontFamily: 'Roboto, sans-serif',
+  borderRadius: 2,
+  palette: {
+    primary1Color: _colors.cyan700,
+    primary2Color: _colors.cyan700,
+    primary3Color: _colors.grey600,
+    accent1Color: _colors.pinkA200,
+    accent2Color: _colors.pinkA400,
+    accent3Color: _colors.pinkA100,
+    textColor: _colors.fullWhite,
+    secondaryTextColor: (0, _colorManipulator.fade)(_colors.fullWhite, 0.7),
+    alternateTextColor: '#303030',
+    canvasColor: '#303030',
+    borderColor: (0, _colorManipulator.fade)(_colors.fullWhite, 0.3),
+    disabledColor: (0, _colorManipulator.fade)(_colors.fullWhite, 0.3),
+    pickerHeaderColor: (0, _colorManipulator.fade)(_colors.fullWhite, 0.12),
+    clockCircleColor: (0, _colorManipulator.fade)(_colors.fullWhite, 0.12)
+  }
+};
+
+/***/ }),
+/* 867 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _CircularProgress = __webpack_require__(868);
+
+var _CircularProgress2 = _interopRequireDefault(_CircularProgress);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _CircularProgress2.default;
+
+/***/ }),
+/* 868 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends2 = __webpack_require__(13);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _objectWithoutProperties2 = __webpack_require__(12);
+
+var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+var _getPrototypeOf = __webpack_require__(6);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(4);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(7);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(8);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(9);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _simpleAssign = __webpack_require__(5);
+
+var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _autoPrefix = __webpack_require__(141);
+
+var _autoPrefix2 = _interopRequireDefault(_autoPrefix);
+
+var _transitions = __webpack_require__(19);
+
+var _transitions2 = _interopRequireDefault(_transitions);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getRelativeValue(value, min, max) {
+  var clampedValue = Math.min(Math.max(min, value), max);
+  return clampedValue / (max - min);
+}
+
+function getArcLength(fraction, props) {
+  return fraction * Math.PI * (props.size - props.thickness);
+}
+
+function getStyles(props, context) {
+  var max = props.max,
+      min = props.min,
+      size = props.size,
+      value = props.value;
+  var palette = context.muiTheme.baseTheme.palette;
+
+
+  var styles = {
+    root: {
+      position: 'relative',
+      display: 'inline-block',
+      width: size,
+      height: size
+    },
+    wrapper: {
+      width: size,
+      height: size,
+      display: 'inline-block',
+      transition: _transitions2.default.create('transform', '20s', null, 'linear'),
+      transitionTimingFunction: 'linear'
+    },
+    svg: {
+      width: size,
+      height: size,
+      position: 'relative'
+    },
+    path: {
+      stroke: props.color || palette.primary1Color,
+      strokeLinecap: 'round',
+      transition: _transitions2.default.create('all', '1.5s', null, 'ease-in-out')
+    }
+  };
+
+  if (props.mode === 'determinate') {
+    var relVal = getRelativeValue(value, min, max);
+    styles.path.transition = _transitions2.default.create('all', '0.3s', null, 'linear');
+    styles.path.strokeDasharray = getArcLength(relVal, props) + ', ' + getArcLength(1, props);
+  }
+
+  return styles;
+}
+
+var CircularProgress = function (_Component) {
+  (0, _inherits3.default)(CircularProgress, _Component);
+
+  function CircularProgress() {
+    (0, _classCallCheck3.default)(this, CircularProgress);
+    return (0, _possibleConstructorReturn3.default)(this, (CircularProgress.__proto__ || (0, _getPrototypeOf2.default)(CircularProgress)).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(CircularProgress, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.scalePath(this.refs.path);
+      this.rotateWrapper(this.refs.wrapper);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearTimeout(this.scalePathTimer);
+      clearTimeout(this.rotateWrapperTimer);
+    }
+  }, {
+    key: 'scalePath',
+    value: function scalePath(path) {
+      var _this2 = this;
+
+      var step = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+      if (this.props.mode !== 'indeterminate') return;
+
+      step %= 3;
+
+      if (step === 0) {
+        path.style.strokeDasharray = getArcLength(0, this.props) + ', ' + getArcLength(1, this.props);
+        path.style.strokeDashoffset = 0;
+        path.style.transitionDuration = '0ms';
+      } else if (step === 1) {
+        path.style.strokeDasharray = getArcLength(0.7, this.props) + ', ' + getArcLength(1, this.props);
+        path.style.strokeDashoffset = getArcLength(-0.3, this.props);
+        path.style.transitionDuration = '750ms';
+      } else {
+        path.style.strokeDasharray = getArcLength(0.7, this.props) + ', ' + getArcLength(1, this.props);
+        path.style.strokeDashoffset = getArcLength(-1, this.props);
+        path.style.transitionDuration = '850ms';
+      }
+
+      this.scalePathTimer = setTimeout(function () {
+        return _this2.scalePath(path, step + 1);
+      }, step ? 750 : 250);
+    }
+  }, {
+    key: 'rotateWrapper',
+    value: function rotateWrapper(wrapper) {
+      var _this3 = this;
+
+      if (this.props.mode !== 'indeterminate') return;
+
+      _autoPrefix2.default.set(wrapper.style, 'transform', 'rotate(0deg)');
+      _autoPrefix2.default.set(wrapper.style, 'transitionDuration', '0ms');
+
+      setTimeout(function () {
+        _autoPrefix2.default.set(wrapper.style, 'transform', 'rotate(1800deg)');
+        _autoPrefix2.default.set(wrapper.style, 'transitionDuration', '10s');
+        _autoPrefix2.default.set(wrapper.style, 'transitionTimingFunction', 'linear');
+      }, 50);
+
+      this.rotateWrapperTimer = setTimeout(function () {
+        return _this3.rotateWrapper(wrapper);
+      }, 10050);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          style = _props.style,
+          innerStyle = _props.innerStyle,
+          size = _props.size,
+          thickness = _props.thickness,
+          other = (0, _objectWithoutProperties3.default)(_props, ['style', 'innerStyle', 'size', 'thickness']);
+      var prepareStyles = this.context.muiTheme.prepareStyles;
+
+      var styles = getStyles(this.props, this.context);
+
+      return _react2.default.createElement(
+        'div',
+        (0, _extends3.default)({}, other, { style: prepareStyles((0, _simpleAssign2.default)(styles.root, style)) }),
+        _react2.default.createElement(
+          'div',
+          { ref: 'wrapper', style: prepareStyles((0, _simpleAssign2.default)(styles.wrapper, innerStyle)) },
+          _react2.default.createElement(
+            'svg',
+            {
+              viewBox: '0 0 ' + size + ' ' + size,
+              style: prepareStyles(styles.svg)
+            },
+            _react2.default.createElement('circle', {
+              ref: 'path',
+              style: prepareStyles(styles.path),
+              cx: size / 2,
+              cy: size / 2,
+              r: (size - thickness) / 2,
+              fill: 'none',
+              strokeWidth: thickness,
+              strokeMiterlimit: '20'
+            })
+          )
+        )
+      );
+    }
+  }]);
+  return CircularProgress;
+}(_react.Component);
+
+CircularProgress.defaultProps = {
+  mode: 'indeterminate',
+  value: 0,
+  min: 0,
+  max: 100,
+  size: 40,
+  thickness: 3.5
+};
+CircularProgress.contextTypes = {
+  muiTheme: _propTypes2.default.object.isRequired
+};
+CircularProgress.propTypes = process.env.NODE_ENV !== "production" ? {
+  /**
+   * Override the progress's color.
+   */
+  color: _propTypes2.default.string,
+  /**
+   * Style for inner wrapper div.
+   */
+  innerStyle: _propTypes2.default.object,
+  /**
+   * The max value of progress, only works in determinate mode.
+   */
+  max: _propTypes2.default.number,
+  /**
+   * The min value of progress, only works in determinate mode.
+   */
+  min: _propTypes2.default.number,
+  /**
+   * The mode of show your progress, indeterminate
+   * for when there is no value for progress.
+   */
+  mode: _propTypes2.default.oneOf(['determinate', 'indeterminate']),
+  /**
+   * The diameter of the progress in pixels.
+   */
+  size: _propTypes2.default.number,
+  /**
+   * Override the inline-styles of the root element.
+   */
+  style: _propTypes2.default.object,
+  /**
+   * Stroke width in pixels.
+   */
+  thickness: _propTypes2.default.number,
+  /**
+   * The value of progress, only works in determinate mode.
+   */
+  value: _propTypes2.default.number
+} : {};
+exports.default = CircularProgress;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ })

@@ -1,4 +1,4 @@
-import { WAITING, FETCHING, TYPING } from '../actions/input_actions';
+import { WAITING, FETCHING, TYPING, SET_AGE } from '../actions/input_actions';
 import merge from "lodash/merge";
 
 const inputReducer = (state = {}, action) => {
@@ -10,6 +10,9 @@ const inputReducer = (state = {}, action) => {
             return merge({}, state, action);
         case TYPING:
             return merge({}, state, action);
+        case SET_AGE:
+            const newAge = action.age;
+            return merge({}, state, newAge);
         default:
             return state;
     }
