@@ -30,7 +30,9 @@ class FeatureImportance extends Component {
         if (!_.isUndefined(nextProps.input.age)) {
             this.setState({slideIndex: nextProps.input.age});
         } else if (!_.isUndefined(nextProps.classifier.final_prediction)) {
-            const newSlideIndex = nextProps.classifier.ordered_class_names.indexOf(nextProps.classifier.final_prediction);
+            const newSlideIndex = nextProps.classifier.ordered_class_names.indexOf(
+                nextProps.classifier.final_prediction
+            );
             this.setState({slideIndex: newSlideIndex});
         }
     }
@@ -75,7 +77,8 @@ class FeatureImportance extends Component {
                                         title={'Feature importance in the ' + as_list.title + ' grade range'}
                                     />
                                     <div style={{marginLeft: 10}}>
-                                        <h3 dangerouslySetInnerHTML={{__html: as_list.highlighted_html}} />
+                                        <h3>Standardized text with highlighted words</h3>
+                                        <p dangerouslySetInnerHTML={{__html: as_list.highlighted_html}} />
                                     </div>
                                 </CardText>) }
                             </SwipeableViews>

@@ -5911,11 +5911,11 @@ const clearClassifier = () => ({
 
 const createClassifier = payload => dispatch => __WEBPACK_IMPORTED_MODULE_0__util_classifier_api_util__["a" /* createClassifier */](payload).then(classifier => {
     dispatch(receiveClassifier(classifier));
-    dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__input_actions__["i" /* waitingInput */])(payload));
+    dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__input_actions__["k" /* waitingInput */])(payload));
 }, err => {
     if (err.status === 404) {
         dispatch(clearClassifier());
-        dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__input_actions__["e" /* clearInput */])());
+        dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__input_actions__["g" /* clearInput */])());
     }
 });
 /* harmony export (immutable) */ __webpack_exports__["d"] = createClassifier;
@@ -47694,7 +47694,7 @@ class HorBarChart extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             'div',
             { style: styles.div },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'h4',
+                'h3',
                 null,
                 this.props.title
             ),
@@ -47798,7 +47798,7 @@ class FeatureImportance extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
     }
 
     render() {
-        if (__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.includes([__WEBPACK_IMPORTED_MODULE_6__actions_input_actions__["c" /* TYPING */], __WEBPACK_IMPORTED_MODULE_6__actions_input_actions__["a" /* FETCHING */]], this.props.input.type)) {
+        if (__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.includes([__WEBPACK_IMPORTED_MODULE_6__actions_input_actions__["d" /* TYPING */], __WEBPACK_IMPORTED_MODULE_6__actions_input_actions__["b" /* FETCHING */]], this.props.input.type)) {
             return '';
         }
         if (!__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.isEmpty(this.props.classifier)) {
@@ -47838,7 +47838,12 @@ class FeatureImportance extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'div',
                                     { style: { marginLeft: 10 } },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h3', { dangerouslySetInnerHTML: { __html: as_list.highlighted_html } })
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'h3',
+                                        null,
+                                        'Standardized text with highlighted words'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('p', { dangerouslySetInnerHTML: { __html: as_list.highlighted_html } })
                                 )
                             ))
                         )
@@ -68007,15 +68012,17 @@ module.exports = isIterateeCall;
 
 const inputReducer = (state = {}, action) => {
     Object.freeze(state);
+    const newAge = action.age;
     switch (action.type) {
-        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["d" /* WAITING */]:
+        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["e" /* WAITING */]:
             return __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, state, action);
-        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["a" /* FETCHING */]:
+        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["b" /* FETCHING */]:
             return __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, state, action);
-        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["c" /* TYPING */]:
+        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["d" /* TYPING */]:
             return __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, state, action);
-        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["b" /* SET_AGE */]:
-            const newAge = action.age;
+        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["c" /* SET_AGE */]:
+            return __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, state, newAge);
+        case __WEBPACK_IMPORTED_MODULE_0__actions_input_actions__["a" /* CLEAR_AGE */]:
             return __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, state, newAge);
         default:
             return state;
@@ -74884,10 +74891,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     createClassifier: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_classifier_actions__["d" /* createClassifier */])(payload)),
     clearClassifier: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_classifier_actions__["c" /* clearClassifier */])()),
-    typingInput: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["h" /* typingInput */])(payload)),
-    fetchingInput: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["f" /* fetchingInput */])(payload)),
-    clearInput: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["e" /* clearInput */])()),
-    setAge: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["g" /* setAge */])(payload))
+    typingInput: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["j" /* typingInput */])(payload)),
+    fetchingInput: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["h" /* fetchingInput */])(payload)),
+    clearInput: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["g" /* clearInput */])()),
+    setAge: payload => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["i" /* setAge */])(payload)),
+    clearAge: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_input_actions__["f" /* clearAge */])())
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__blurb_input__["a" /* default */]));
@@ -74965,6 +74973,7 @@ class BlurbInput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
     handleClearClick(event) {
         this.props.clearClassifier();
+        this.props.clearAge();
         this.props.clearInput();
     }
 
@@ -74982,7 +74991,7 @@ class BlurbInput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     fullWidth: true,
                     rows: 3,
                     value: this.props.input.description,
-                    disabled: this.props.input.type === __WEBPACK_IMPORTED_MODULE_7__actions_input_actions__["a" /* FETCHING */],
+                    disabled: this.props.input.type === __WEBPACK_IMPORTED_MODULE_7__actions_input_actions__["b" /* FETCHING */],
                     onChange: e => this.handleTextChange(e)
                 }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -74992,8 +75001,9 @@ class BlurbInput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                         value: this.props.input.age,
                         onChange: (e, i, v) => this.handleSelectChange(e, i, v),
                         style: styles.selectWidth,
-                        disabled: this.props.input.type === __WEBPACK_IMPORTED_MODULE_7__actions_input_actions__["a" /* FETCHING */]
+                        disabled: this.props.input.type === __WEBPACK_IMPORTED_MODULE_7__actions_input_actions__["b" /* FETCHING */]
                     },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: null, primaryText: '' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 0, primaryText: 'Preschool/Pre-K' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 1, primaryText: 'K-2' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 2, primaryText: '3-5' }),
@@ -75004,7 +75014,7 @@ class BlurbInput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default.a, { style: styles.button,
                     label: 'Clear',
                     secondary: true,
-                    disabled: this.props.input.type === __WEBPACK_IMPORTED_MODULE_7__actions_input_actions__["a" /* FETCHING */] || !this.props.input.description,
+                    disabled: this.props.input.type === __WEBPACK_IMPORTED_MODULE_7__actions_input_actions__["b" /* FETCHING */] || !this.props.input.description,
                     onClick: e => this.handleClearClick(e) })
             )
         );
@@ -81009,51 +81019,61 @@ exports.default = RaisedButton;
 
 "use strict";
 const WAITING = 'WAITING';
-/* harmony export (immutable) */ __webpack_exports__["d"] = WAITING;
+/* harmony export (immutable) */ __webpack_exports__["e"] = WAITING;
 
 const TYPING = 'TYPING';
-/* harmony export (immutable) */ __webpack_exports__["c"] = TYPING;
+/* harmony export (immutable) */ __webpack_exports__["d"] = TYPING;
 
 const FETCHING = 'FETCHING';
-/* harmony export (immutable) */ __webpack_exports__["a"] = FETCHING;
+/* harmony export (immutable) */ __webpack_exports__["b"] = FETCHING;
 
 const SET_AGE = 'SET_AGE';
-/* harmony export (immutable) */ __webpack_exports__["b"] = SET_AGE;
+/* harmony export (immutable) */ __webpack_exports__["c"] = SET_AGE;
+
+const CLEAR_AGE = 'CLEAR_AGE';
+/* harmony export (immutable) */ __webpack_exports__["a"] = CLEAR_AGE;
 
 
 const waitingInput = input => ({
     type: WAITING,
     description: input.description
 });
-/* harmony export (immutable) */ __webpack_exports__["i"] = waitingInput;
+/* harmony export (immutable) */ __webpack_exports__["k"] = waitingInput;
 
 
 const typingInput = input => ({
     type: TYPING,
     description: input.description
 });
-/* harmony export (immutable) */ __webpack_exports__["h"] = typingInput;
+/* harmony export (immutable) */ __webpack_exports__["j"] = typingInput;
 
 
 const fetchingInput = input => ({
     type: FETCHING,
     description: input.description
 });
-/* harmony export (immutable) */ __webpack_exports__["f"] = fetchingInput;
+/* harmony export (immutable) */ __webpack_exports__["h"] = fetchingInput;
 
 
 const clearInput = () => ({
     type: WAITING,
     description: ''
 });
-/* harmony export (immutable) */ __webpack_exports__["e"] = clearInput;
+/* harmony export (immutable) */ __webpack_exports__["g"] = clearInput;
 
 
 const setAge = age => ({
     type: SET_AGE,
     age
 });
-/* harmony export (immutable) */ __webpack_exports__["g"] = setAge;
+/* harmony export (immutable) */ __webpack_exports__["i"] = setAge;
+
+
+const clearAge = () => ({
+    type: CLEAR_AGE,
+    age: { age: null }
+});
+/* harmony export (immutable) */ __webpack_exports__["f"] = clearAge;
 
 
 /***/ }),
@@ -81127,7 +81147,7 @@ const styles = {
 class BlurbOutput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
     render() {
-        if (__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.includes([__WEBPACK_IMPORTED_MODULE_5__actions_input_actions__["c" /* TYPING */], __WEBPACK_IMPORTED_MODULE_5__actions_input_actions__["a" /* FETCHING */]], this.props.input.type)) {
+        if (__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.includes([__WEBPACK_IMPORTED_MODULE_5__actions_input_actions__["d" /* TYPING */], __WEBPACK_IMPORTED_MODULE_5__actions_input_actions__["b" /* FETCHING */]], this.props.input.type)) {
             const convertTypeToText = {
                 TYPING: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h3',

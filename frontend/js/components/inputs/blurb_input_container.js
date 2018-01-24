@@ -3,7 +3,7 @@ import BlurbInput from './blurb_input';
 
 // Actions
 import {clearClassifier, createClassifier} from '../../actions/classifier_actions';
-import {typingInput, fetchingInput, clearInput, setAge} from '../../actions/input_actions';
+import {typingInput, fetchingInput, clearInput, setAge, clearAge} from '../../actions/input_actions';
 
 const mapStateToProps = state => ({
     classifier: state.classifier,
@@ -17,6 +17,7 @@ const mapDispatchToProps = dispatch => ({
     fetchingInput: payload => dispatch(fetchingInput(payload)),
     clearInput: () => dispatch(clearInput()),
     setAge: payload => dispatch(setAge(payload)),
+    clearAge: () => dispatch(clearAge()),
 });
 
 export default connect(

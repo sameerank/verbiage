@@ -2,6 +2,7 @@ export const WAITING = 'WAITING';
 export const TYPING = 'TYPING';
 export const FETCHING = 'FETCHING';
 export const SET_AGE = 'SET_AGE';
+export const CLEAR_AGE = 'CLEAR_AGE';
 
 
 export const waitingInput = input => ({
@@ -27,4 +28,9 @@ export const clearInput = () => ({
 export const setAge = (age) => ({
     type: SET_AGE,
     age
+});
+
+export const clearAge = () => ({
+    type: CLEAR_AGE,
+    age: { age: null }
 });

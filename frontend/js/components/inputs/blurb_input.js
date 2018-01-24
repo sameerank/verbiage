@@ -51,7 +51,8 @@ class BlurbInput extends Component {
 
     handleClearClick(event) {
         this.props.clearClassifier();
-        this.props.clearInput()
+        this.props.clearAge();
+        this.props.clearInput();
     }
 
     render () {
@@ -75,6 +76,7 @@ class BlurbInput extends Component {
                         style={styles.selectWidth}
                         disabled={this.props.input.type === FETCHING}
                     >
+                        <MenuItem value={null} primaryText="" />
                         <MenuItem value={0} primaryText="Preschool/Pre-K" />
                         <MenuItem value={1} primaryText="K-2" />
                         <MenuItem value={2} primaryText="3-5" />
