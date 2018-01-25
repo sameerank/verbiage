@@ -9,7 +9,7 @@ const styles = {
         flex: '1 1 100%',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: 20
+        marginBottom: 5
     },
     rowDiv:{
         display: 'flex',
@@ -36,10 +36,12 @@ class App extends Component {
         console.log();
         return (
             <div>
-                <Card style={styles.card}>
+                <Card style={styles.card} zDepth={2}>
                     <CardTitle
                         title="VerbiAge"
-                        subtitle="An app for helping tailor your book's description to the right K-12 age group." />
+                        subtitle="An app for tailoring your book's description to the right K-12 age group." />
+                </Card>
+                <Card style={styles.card} zDepth={2}>
                     <CardText>
                         <div style={styles.rowDiv}>
                             <BlurbInputContainer />

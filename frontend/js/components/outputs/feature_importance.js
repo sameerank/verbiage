@@ -58,9 +58,9 @@ class FeatureImportance extends Component {
                 })
             );
             return (
-                <Card>
+                <Card zDepth={2}>
                     <CardText>
-                        <Card style={styles.card} zDepth={5}>
+                        <Card style={styles.card} zDepth={2}>
                             <Tabs
                                 onChange={(v) => this.handleChange(v)}
                                 value={this.state.slideIndex}>
@@ -77,8 +77,8 @@ class FeatureImportance extends Component {
                                         title={'Feature importance in the ' + as_list.title + ' grade range'}
                                     />
                                     <div style={{marginLeft: 10}}>
-                                        <h3>Standardized text with highlighted words</h3>
-                                        <p dangerouslySetInnerHTML={{__html: as_list.highlighted_html}} />
+                                        <h2>Standardized text with highlighted words</h2>
+                                        <h3 dangerouslySetInnerHTML={{__html: as_list.highlighted_html}} />
                                     </div>
                                 </CardText>) }
                             </SwipeableViews>

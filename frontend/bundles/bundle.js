@@ -47694,7 +47694,7 @@ class HorBarChart extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             'div',
             { style: styles.div },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'h3',
+                'h2',
                 null,
                 this.props.title
             ),
@@ -47809,13 +47809,13 @@ class FeatureImportance extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
             }));
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-                null,
+                { zDepth: 2 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardText"],
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-                        { style: styles.card, zDepth: 5 },
+                        { style: styles.card, zDepth: 2 },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             __WEBPACK_IMPORTED_MODULE_4_material_ui_Tabs__["Tabs"],
                             {
@@ -47839,11 +47839,11 @@ class FeatureImportance extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"]
                                     'div',
                                     { style: { marginLeft: 10 } },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'h3',
+                                        'h2',
                                         null,
                                         'Standardized text with highlighted words'
                                     ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('p', { dangerouslySetInnerHTML: { __html: as_list.highlighted_html } })
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h3', { dangerouslySetInnerHTML: { __html: as_list.highlighted_html } })
                                 )
                             ))
                         )
@@ -65831,17 +65831,10 @@ const classifierReducer = (state = {}, action) => {
 
 const createClassifier = payload => $.ajax({
     method: 'POST',
-    url: '/api/tfidfclassifier/',
+    url: '/api/classifier/',
     data: payload
 });
 /* harmony export (immutable) */ __webpack_exports__["a"] = createClassifier;
-
-
-const fetchClassifier = id => $.ajax({
-    method: 'GET',
-    url: `/api/classifier/${id}/` + JSON_FORMAT
-});
-/* unused harmony export fetchClassifier */
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(109)))
 
@@ -68058,7 +68051,7 @@ const inputReducer = (state = {}, action) => {
 
 const Root = ({ store }) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_4_material_ui_styles_MuiThemeProvider___default.a,
-    { muiTheme: __WEBPACK_IMPORTED_MODULE_5_material_ui_styles_getMuiTheme___default()(__WEBPACK_IMPORTED_MODULE_3_material_ui_styles_baseThemes_darkBaseTheme___default.a) },
+    { muiTheme: __WEBPACK_IMPORTED_MODULE_5_material_ui_styles_getMuiTheme___default()(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles_baseThemes_lightBaseTheme___default.a) },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_react_redux__["a" /* Provider */],
         { store: store },
@@ -74815,7 +74808,7 @@ const styles = {
         flex: '1 1 100%',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: 20
+        marginBottom: 5
     },
     rowDiv: {
         display: 'flex',
@@ -74845,10 +74838,14 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_4_material_ui_Card__["Card"],
-                { style: styles.card },
+                { style: styles.card, zDepth: 2 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_material_ui_Card__["CardTitle"], {
                     title: 'VerbiAge',
-                    subtitle: 'An app for helping tailor your book\'s description to the right K-12 age group.' }),
+                    subtitle: 'An app for tailoring your book\'s description to the right K-12 age group.' })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_4_material_ui_Card__["Card"],
+                { style: styles.card, zDepth: 2 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_4_material_ui_Card__["CardText"],
                     null,
@@ -74980,12 +74977,12 @@ class BlurbInput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     render() {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-            { style: styles.card, zDepth: 5 },
+            { style: styles.card, zDepth: this.props.input.type === __WEBPACK_IMPORTED_MODULE_7__actions_input_actions__["d" /* TYPING */] ? 5 : 2 },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'form',
                 { style: styles.div },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui_TextField___default.a, {
-                    hintText: 'Type book blurb here',
+                    hintText: 'Type your book\'s description here',
                     floatingLabelText: 'Book description',
                     multiLine: true,
                     fullWidth: true,
@@ -81168,7 +81165,7 @@ class BlurbOutput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             };
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-                { style: styles.card, zDepth: 5 },
+                { style: styles.card, zDepth: this.props.input.type === __WEBPACK_IMPORTED_MODULE_5__actions_input_actions__["b" /* FETCHING */] ? 5 : 2 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardHeader"],
                     { style: { textAlign: 'center' } },
@@ -81183,7 +81180,7 @@ class BlurbOutput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             }));
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-                { style: styles.card, zDepth: 5 },
+                { style: styles.card, zDepth: 2 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardText"],
                     null,
@@ -81217,7 +81214,7 @@ class BlurbOutput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         }
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"],
-            { style: styles.card, zDepth: 5 },
+            { style: styles.card, zDepth: 2 },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardHeader"],
                 { style: { textAlign: 'center' } },

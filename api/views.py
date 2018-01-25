@@ -1,6 +1,6 @@
 from api.models import Book, Level, TrainedModel
 from api.serializers import BookSerializer, LevelSerializer, TrainedModelSerializer
-from api.utils import load_word2vec, standardize_text, w2v_make_pipline
+from api.utils import standardize_text
 from sklearn.pipeline import make_pipeline
 from lime.lime_text import LimeTextExplainer
 from rest_framework.views import APIView
@@ -11,22 +11,22 @@ from operator import itemgetter
 
 GRADE_CATEGORIES = ('Preschool/Pre-K', 'K-2', '3-5', '6-8', '9-12',)
 
-class BookList(generics.ListCreateAPIView):
+class BookList(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
 
-class BookDetail(generics.RetrieveUpdateDestroyAPIView):
+class BookDetail(generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
 
-class LevelList(generics.ListCreateAPIView):
+class LevelList(generics.ListAPIView):
     queryset = Level.objects.all()
     serializer_class = LevelSerializer
 
 
-class LevelDetail(generics.RetrieveUpdateDestroyAPIView):
+class LevelDetail(generics.RetrieveAPIView):
     queryset = Level.objects.all()
     serializer_class = LevelSerializer
 
@@ -36,35 +36,7 @@ class TrainedModelList(generics.ListCreateAPIView):
     serializer_class = TrainedModelSerializer
 
 
-class W2VClassifier(APIView):
-
-    def post(self, request, format=None):
-        tm = TrainedModel.objects.get(pk=1)
-        classifier = tm.pickled_model
-        vectorizer = load_word2vec()
-        input_text = request.data.get('description', 'ERROR')
-        if not input_text:
-            response = {'error': 'Input is an empty string'}
-            return Response(response, status=status.HTTP_204_NO_CONTENT)
-        standardized_text = standardize_text(input_text)
-        explainer = LimeTextExplainer(class_names=GRADE_CATEGORIES)
-        pipeline = w2v_make_pipline(vectorizer, classifier)
-        exp = explainer.explain_instance(standardized_text, pipeline, num_features=6, labels=[0, 1, 2, 3, 4])
-        predict_probas = dict(zip(exp.class_names, exp.predict_proba))
-        prediction = max(predict_probas.items(), key=itemgetter(1))[0]
-        response = {
-            'final_prediction': prediction,
-            'ordered_class_names': exp.class_names,
-            'predict_probas': predict_probas,
-            'as_list': {
-                exp.class_names[lbl]: exp.as_list(label=lbl) for lbl in exp.available_labels()
-            }
-        }
-        return Response(response, status=status.HTTP_201_CREATED)
-
-
-class TfidfClassifier(APIView):
-
+class Classifier(APIView):
     def post(self, request, format=None):
         tm_classifier = TrainedModel.objects.get(name='tfidf_logistic_regression')
         classifier = tm_classifier.pickled_model

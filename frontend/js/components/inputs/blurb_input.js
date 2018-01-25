@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import _ from 'lodash';
-import { FETCHING } from '../../actions/input_actions'
+import {FETCHING, TYPING} from '../../actions/input_actions'
 
 const styles = {
     div: {
@@ -57,10 +57,10 @@ class BlurbInput extends Component {
 
     render () {
         return(
-            <Card style={styles.card} zDepth={5}>
+            <Card style={styles.card} zDepth={this.props.input.type === TYPING ? 5 : 2 }>
                 <form style={styles.div}>
                     <TextField
-                        hintText="Type book blurb here"
+                        hintText="Type your book's description here"
                         floatingLabelText="Book description"
                         multiLine={true}
                         fullWidth={true}

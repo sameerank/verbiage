@@ -7,7 +7,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import App from './app';
 
 const Root = ({ store }) => (
-    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
         <Provider store={store}>
             <App />
         </Provider>

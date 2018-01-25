@@ -21,7 +21,7 @@ class HorBarChart extends Component {
         let {hoveredCell} = this.state;
         return (
             <div style={styles.div}>
-                <h3>{this.props.title}</h3>
+                <h2>{this.props.title}</h2>
                 <XYPlot
                     margin={{left: 150, right: 150}}
                     yType={'ordinal'}

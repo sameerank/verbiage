@@ -33,7 +33,7 @@ class BlurbOutput extends Component {
                 FETCHING: (<div><h3>Fetching results</h3><br /><CircularProgress /></div>)
             };
             return (
-            <Card style={styles.card} zDepth={5}>
+            <Card style={styles.card} zDepth={this.props.input.type === FETCHING ? 5 : 2 }>
                 <CardHeader style={{textAlign: 'center'}}>
                     { convertTypeToText[this.props.input.type] }
                 </CardHeader>
@@ -47,7 +47,7 @@ class BlurbOutput extends Component {
                 })
             );
             return (
-                <Card style={styles.card} zDepth={5}>
+                <Card style={styles.card} zDepth={2}>
                     <CardText>
                         <div style={styles.colDiv}>
                             <div style={styles.div}>
@@ -64,7 +64,7 @@ class BlurbOutput extends Component {
                 </Card>);
         }
         return (
-            <Card style={styles.card} zDepth={5}>
+            <Card style={styles.card} zDepth={2}>
                 <CardHeader style={{textAlign: 'center'}}>
                     <h3>Waiting for user input <ReactAnimatedEllipsis style={{fontSize: "3rem"}} /></h3>
                 </CardHeader>
