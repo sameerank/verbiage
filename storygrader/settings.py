@@ -79,8 +79,8 @@ WSGI_APPLICATION = 'storygrader.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'storygrader',
-        'USER': 'skunche',
+        'NAME': 'verbiage',
+        'USER': '',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',

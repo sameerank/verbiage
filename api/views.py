@@ -1,5 +1,5 @@
-from api.models import Book, Level, TrainedModel
-from api.serializers import BookSerializer, LevelSerializer, TrainedModelSerializer
+from api.models import TrainedModel
+from api.serializers import TrainedModelSerializer
 from api.utils import standardize_text
 from sklearn.pipeline import make_pipeline
 from lime.lime_text import LimeTextExplainer
@@ -11,27 +11,8 @@ from operator import itemgetter
 
 GRADE_CATEGORIES = ('K-2', '3-5', '6-8', '9-12',)
 
-class BookList(generics.ListAPIView):
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
 
-
-class BookDetail(generics.RetrieveAPIView):
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-
-
-class LevelList(generics.ListAPIView):
-    queryset = Level.objects.all()
-    serializer_class = LevelSerializer
-
-
-class LevelDetail(generics.RetrieveAPIView):
-    queryset = Level.objects.all()
-    serializer_class = LevelSerializer
-
-
-class TrainedModelList(generics.ListCreateAPIView):
+class TrainedModelList(generics.ListAPIView):
     queryset = TrainedModel.objects.all()
     serializer_class = TrainedModelSerializer
 

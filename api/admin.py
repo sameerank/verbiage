@@ -1,7 +1,5 @@
 from django.contrib import admin
-from api.models import Book, Level, TrainedModel
+from api.models import TrainedModel
 
 # Register your models here.
-admin.site.register(Book)
-admin.site.register(Level)
 admin.site.register(TrainedModel)
