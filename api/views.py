@@ -9,7 +9,7 @@ from rest_framework import status
 from rest_framework import generics
 from operator import itemgetter
 
-GRADE_CATEGORIES = ('Preschool/Pre-K', 'K-2', '3-5', '6-8', '9-12',)
+GRADE_CATEGORIES = ('K-2', '3-5', '6-8', '9-12',)
 
 class BookList(generics.ListAPIView):
     queryset = Book.objects.all()
@@ -49,7 +49,7 @@ class Classifier(APIView):
         standardized_text = standardize_text(input_text)
         explainer = LimeTextExplainer(class_names=GRADE_CATEGORIES)
         c = make_pipeline(vectorizer, classifier)
-        exp = explainer.explain_instance(standardized_text, c.predict_proba, num_features=6, labels=[0, 1, 2, 3, 4])
+        exp = explainer.explain_instance(standardized_text, c.predict_proba, num_features=6, labels=[0, 1, 2, 3])
         predict_probas = dict(zip(exp.class_names, exp.predict_proba))
         prediction = max(predict_probas.items(), key=itemgetter(1))[0]
         highlighted_html = {}
@@ -58,7 +58,7 @@ class Classifier(APIView):
             for word, val in exp.as_list(label=lbl):
                 color = "#FF4136" if val < 0 else "#2ECC40"
                 original_text = " ".join(['<span style="background-color: {};">{}</span>'.format(
-                    color, w) if w == word else w for w in original_text.split(" ")])
+                    color, w) if w == word else w for w in original_text.split()])
             highlighted_html[exp.class_names[lbl]] = original_text
         response = {
             'final_prediction': prediction,
