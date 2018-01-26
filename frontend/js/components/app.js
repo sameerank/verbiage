@@ -33,13 +33,16 @@ const styles = {
 class App extends Component {
 
     render () {
-        console.log();
         return (
             <div>
                 <Card style={styles.card} zDepth={2}>
                     <CardTitle
                         title="VerbiAge"
-                        subtitle="An app for tailoring your book's description to the right K-12 age group." />
+                        subtitle="An app for tailoring your book's description for an intended K-12 class."
+                        titleStyle={{ fontFamily: 'Raleway', fontSize: 35, fontColor: "lightseagreen" }}
+                        titleColor="lightseagreen"
+                        subtitleStyle={{paddingTop: 10}}
+                    />
                 </Card>
                 <Card style={styles.card} zDepth={2}>
                     <CardText>
