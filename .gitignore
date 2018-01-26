@@ -1,7 +1,5 @@
 bundle.js
 bundle.js.map
-storygrader/GoogleNews-vectors-negative300.bin.gz
-*.pickle
 
 #### Taken from Github's .gitignore template for Python projects ####
 #### https://github.com/github/gitignore/blob/master/Python.gitignore ####

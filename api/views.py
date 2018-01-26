@@ -19,9 +19,9 @@ class TrainedModelList(generics.ListAPIView):
 
 class Classifier(APIView):
     def post(self, request, format=None):
-        tm_classifier = TrainedModel.objects.get(name='tfidf_logistic_regression')
+        tm_classifier = TrainedModel.objects.get(name='clf')
         classifier = tm_classifier.pickled_model
-        tm_vectorizer = TrainedModel.objects.get(name='tfidf_vectorizer')
+        tm_vectorizer = TrainedModel.objects.get(name='tfidf')
         vectorizer = tm_vectorizer.pickled_model
         input_text = request.data.get('description', 'ERROR')
         if not input_text:
