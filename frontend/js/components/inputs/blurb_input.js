@@ -77,11 +77,10 @@ class BlurbInput extends Component {
                         disabled={this.props.input.type === FETCHING}
                     >
                         <MenuItem value={null} primaryText="" />
-                        <MenuItem value={0} primaryText="Preschool/Pre-K" />
-                        <MenuItem value={1} primaryText="K-2" />
-                        <MenuItem value={2} primaryText="3-5" />
-                        <MenuItem value={3} primaryText="6-8" />
-                        <MenuItem value={4} primaryText="9-12" />
+                        <MenuItem value={0} primaryText="K-2" />
+                        <MenuItem value={1} primaryText="3-5" />
+                        <MenuItem value={2} primaryText="6-8" />
+                        <MenuItem value={3} primaryText="9-12" />
                     </SelectField>
                     <br />
                     <RaisedButton style={styles.button}

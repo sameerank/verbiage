@@ -75001,11 +75001,10 @@ class BlurbInput extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                         disabled: this.props.input.type === __WEBPACK_IMPORTED_MODULE_7__actions_input_actions__["b" /* FETCHING */]
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: null, primaryText: '' }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 0, primaryText: 'Preschool/Pre-K' }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 1, primaryText: 'K-2' }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 2, primaryText: '3-5' }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 3, primaryText: '6-8' }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 4, primaryText: '9-12' })
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 0, primaryText: 'K-2' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 1, primaryText: '3-5' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 2, primaryText: '6-8' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_MenuItem___default.a, { value: 3, primaryText: '9-12' })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default.a, { style: styles.button,
