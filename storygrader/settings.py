@@ -25,7 +25,7 @@ SECRET_KEY = 'p_xz*tp=xe)1h9s95#y-ljym^2eate4^p7xtx4c$f)!^%1&jbh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ec2-52-15-189-27.us-east-2.compute.amazonaws.com']
 
 
 # Application definition
@@ -136,3 +136,9 @@ WEBPACK_LOADER = {
 }
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
