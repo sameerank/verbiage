@@ -1,5 +1,6 @@
 bundle.js
 bundle.js.map
+static
 
 #### Taken from Github's .gitignore template for Python projects ####
 #### https://github.com/github/gitignore/blob/master/Python.gitignore ####
