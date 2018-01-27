@@ -25,9 +25,9 @@ SECRET_KEY = 'p_xz*tp=xe)1h9s95#y-ljym^2eate4^p7xtx4c$f)!^%1&jbh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-52-15-189-27.us-east-2.compute.amazonaws.com',
+ALLOWED_HOSTS = ['ec2-18-218-114-234.us-east-2.compute.amazonaws.com',
                  '127.0.0.1',
-                 '52.15.189.27',
+                 '18.218.114.234',
                  'verbiage.help']
 
 
