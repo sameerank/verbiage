@@ -40,32 +40,27 @@ class HighlightedText extends Component {
             </Card>);
         }
         if (!_.isEmpty(this.props.classifier)) {
-            const predict_probas = this.props.classifier.ordered_class_names.map(
-                (k) => ({
-                    x: this.props.classifier.predict_probas[k],
-                    y: k
-                })
-            );
+            if (!_.isInteger(this.props.input.age)) {
+                return (
+                    <Card style={styles.card} zDepth={2}>
+                        <CardHeader style={{textAlign: 'center'}}>
+                            <h3>Specify the intended age to view highlighted text for that category.</h3>
+                        </CardHeader>
+                    </Card>
+                );
+            }
+            const ageRange = this.props.classifier.ordered_class_names[this.props.input.age];
             return (
                 <Card style={styles.card} zDepth={2}>
                     <CardText>
                         <div style={styles.colDiv}>
                             <div style={styles.div}>
-                                <h3>This book sounds like it should be read by students in these grades:</h3>
-                                <h1>{this.props.classifier.final_prediction}</h1>
-                            </div>
-                            <div style={styles.rowDiv}>
-                                <div style={{flex: 1}} />
-                                <HorBarChart data={predict_probas}
-                                             title={'Prediction probabilities'}
-                                             margin={120}
-                                             width={500}
-                                />
-                                <div style={{flex: 1}} />
+                                <h3 dangerouslySetInnerHTML={{__html: this.props.classifier.highlighted_html[ageRange] }} />
                             </div>
                         </div>
                     </CardText>
-                </Card>);
+                </Card>
+            );
         }
         return (
             <Card style={styles.card} zDepth={2}>

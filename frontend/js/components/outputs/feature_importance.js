@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardText, CardTitle} from 'material-ui/Card';
+import {Card, CardText, CardHeader} from 'material-ui/Card';
 import _ from 'lodash'
 import HorBarChart from './horizontal_bar';
 import {Tabs, Tab} from 'material-ui/Tabs';
@@ -64,7 +64,7 @@ class FeatureImportance extends Component {
             );
             return (
                 <Card style={styles.outerCard} zDepth={2}>
-                    <CardTitle>Word importance across categories</CardTitle>
+                    <CardHeader title="Word importance across categories" />
                     <CardText>
                         <Card style={styles.card} zDepth={2}>
                             <Tabs
