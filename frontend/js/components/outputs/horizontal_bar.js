@@ -19,7 +19,6 @@ class HorBarChart extends Component {
 
     render () {
         let {hoveredCell} = this.state;
-        console.log(this.props.margin);
         return (
             <div style={styles.div}>
                 <h2>{this.props.title}</h2>

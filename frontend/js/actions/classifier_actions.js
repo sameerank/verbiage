@@ -1,8 +1,10 @@
 import * as ClassifierAPIUtil from '../util/classifier_api_util';
 import { waitingInput, clearInput } from './input_actions';
+import { receiveErrors, clearErrors } from './error_actions';
 
 export const RECEIVE_CLASSIFIER = 'RECEIVE_CLASSIFIER';
 export const CLEAR_CLASSIFIER = 'CLEAR_CLASSIFIER';
+export const CLASSIFIER_ERROR = "CLASSIFIER_ERROR";
 
 
 export const receiveClassifier = classifier => ({
@@ -14,17 +16,25 @@ export const clearClassifier = () => ({
     type: CLEAR_CLASSIFIER,
 });
 
+export const classifierError = error => ({
+  type: CLASSIFIER_ERROR,
+  error
+});
+
 export const createClassifier = payload => dispatch => (
     ClassifierAPIUtil.createClassifier(payload)
         .then(
             classifier => {
                 dispatch(receiveClassifier(classifier));
                 dispatch(waitingInput(payload));
+                dispatch(clearErrors());
             },
             err => {
                 if (err.status === 404) {
                     dispatch(clearClassifier());
                     dispatch(clearInput());
+                } else {
+                    dispatch(receiveErrors(err.responseJSON))
                 }
             }
         )
