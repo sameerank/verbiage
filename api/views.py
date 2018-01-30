@@ -1,5 +1,5 @@
-from api.models import TrainedModel
-from api.serializers import TrainedModelSerializer
+from api.models import Pickle, AgeGroup
+from api.serializers import PickleSerializer, AgeGroupSerializer
 from api.utils import standardize_text
 from sklearn.pipeline import make_pipeline
 from lime.lime_text import LimeTextExplainer
@@ -12,16 +12,21 @@ from operator import itemgetter
 GRADE_CATEGORIES = ('K-2', '3-5', '6-8', '9-12',)
 
 
-class TrainedModelList(generics.ListAPIView):
-    queryset = TrainedModel.objects.all()
-    serializer_class = TrainedModelSerializer
+class AgeGroupList(generics.ListAPIView):
+    queryset = AgeGroup.objects.all()
+    serializer_class = AgeGroupSerializer
+
+
+class PickleList(generics.ListAPIView):
+    queryset = Pickle.objects.all()
+    serializer_class = PickleSerializer
 
 
 class Classifier(APIView):
     def post(self, request, format=None):
-        tm_classifier = TrainedModel.objects.get(name='clf')
+        tm_classifier = Pickle.objects.get(name='clf')
         classifier = tm_classifier.pickled_model
-        tm_vectorizer = TrainedModel.objects.get(name='tfidf')
+        tm_vectorizer = Pickle.objects.get(name='tfidf')
         vectorizer = tm_vectorizer.pickled_model
         input_text = request.data.get('description', 'ERROR')
         if not input_text:

@@ -3,7 +3,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
 
 urlpatterns = [
-    url(r'^models/(?P<pk>[0-9]+)/$', views.TrainedModelList.as_view(), name="model_index"),
+    url(r'^age-groups/$', views.AgeGroupList.as_view(), name="age_groups"),
+    url(r'^pickles/$', views.PickleList.as_view(), name="pickles"),
     url(r'^classifier/$', views.Classifier.as_view(), name="classifier"),
 ]
 

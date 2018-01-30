@@ -23,7 +23,14 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
     },
+    greenSpan: {
+        backgroundColor: '#2ECC40'
+    },
+    redSpan: {
+        backgroundColor: '#FF4136'
+    }
 };
+
 class HighlightedText extends Component {
 
     render () {
@@ -52,6 +59,17 @@ class HighlightedText extends Component {
             const ageRange = this.props.classifier.ordered_class_names[this.props.input.age];
             return (
                 <Card style={styles.card} zDepth={2}>
+                    <CardHeader style={{textAlign: 'center'}}>
+                        <h3>Standardized text with highlighted words for the intended age ({ ageRange })</h3>
+                        <p>(
+                            <span style={styles.greenSpan}>
+                                green
+                            </span> is good, <span style={styles.redSpan}>
+                                red
+                            </span> is bad
+                            )
+                        </p>
+                    </CardHeader>
                     <CardText>
                         <div style={styles.colDiv}>
                             <div style={styles.div}>

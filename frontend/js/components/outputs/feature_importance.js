@@ -32,9 +32,7 @@ class FeatureImportance extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (!_.isUndefined(nextProps.input.age)) {
-            this.setState({slideIndex: nextProps.input.age});
-        } else if (!_.isUndefined(nextProps.classifier.final_prediction)) {
+        if (!_.isUndefined(nextProps.classifier.final_prediction)) {
             const newSlideIndex = nextProps.classifier.ordered_class_names.indexOf(
                 nextProps.classifier.final_prediction
             );
@@ -64,7 +62,10 @@ class FeatureImportance extends Component {
             );
             return (
                 <Card style={styles.outerCard} zDepth={2}>
-                    <CardHeader title="Word importance across categories" />
+                    <CardHeader
+                        title={ "Word importance across categories. Selected tab defaults to the predicted class (" +
+                        this.props.classifier.final_prediction + ")."}
+                    />
                     <CardText>
                         <Card style={styles.card} zDepth={2}>
                             <Tabs

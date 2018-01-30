@@ -39,7 +39,7 @@ class App extends Component {
                 <Card style={styles.card} zDepth={2}>
                     <CardTitle
                         title="VerbiAge"
-                        subtitle="An app for tailoring your book's description for an intended K-12 class."
+                        subtitle="An app for tailoring your book's description for a target K-12 age."
                         titleStyle={{ fontFamily: 'Raleway', fontSize: 35, fontColor: "lightseagreen" }}
                         titleColor="lightseagreen"
                         subtitleStyle={{paddingTop: 10}}
