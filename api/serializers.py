@@ -11,7 +11,7 @@ class AgeGroupSerializer(serializers.ModelSerializer):
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ('id', 'title', 'author', 'description')
+        fields = ('id', 'title', 'author', 'description', 'age_group')
 
 
 class PickleSerializer(serializers.ModelSerializer):
