@@ -10,6 +10,11 @@ const styles = {
     div: {
         margin: '20px',
     },
+    outerCard: {
+        flex: 2,
+        minWidth: 0,
+        marginLeft: 2,
+    },
     card: {
         flex: '1 1 100%',
         display: 'flex',
@@ -58,7 +63,8 @@ class FeatureImportance extends Component {
                 })
             );
             return (
-                <Card zDepth={2}>
+                <Card style={styles.outerCard} zDepth={2}>
+                    <CardTitle>Word importance across categories</CardTitle>
                     <CardText>
                         <Card style={styles.card} zDepth={2}>
                             <Tabs
@@ -75,6 +81,8 @@ class FeatureImportance extends Component {
                                     <HorBarChart
                                         data={as_list.data}
                                         title={'Feature importance in the ' + as_list.title + ' grade range'}
+                                        margin={150}
+                                        width={500}
                                     />
                                     <div style={{marginLeft: 10}}>
                                         <h2>Standardized text with highlighted words</h2>

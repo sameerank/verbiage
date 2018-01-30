@@ -11,7 +11,7 @@ const styles = {
         textAlign: 'center',
     },
     card:{
-        marginLeft: 10,
+        marginRight: 2,
         flex: 1,
         minWidth: 0
     },
@@ -28,16 +28,7 @@ class BlurbOutput extends Component {
 
     render () {
         if (_.includes([TYPING, FETCHING], this.props.input.type)) {
-            const convertTypeToText = {
-                TYPING: (<h3>User is typing</h3>),
-                FETCHING: (<div><h3>Fetching results</h3><br /><CircularProgress /></div>)
-            };
-            return (
-            <Card style={styles.card} zDepth={this.props.input.type === FETCHING ? 5 : 2 }>
-                <CardHeader style={{textAlign: 'center'}}>
-                    { convertTypeToText[this.props.input.type] }
-                </CardHeader>
-            </Card>);
+            return '';
         }
         if (!_.isEmpty(this.props.classifier)) {
             const predict_probas = this.props.classifier.ordered_class_names.map(
@@ -56,20 +47,18 @@ class BlurbOutput extends Component {
                             </div>
                             <div style={styles.rowDiv}>
                                 <div style={{flex: 1}} />
-                                <HorBarChart data={predict_probas} title={'Prediction probabilities'} />
+                                <HorBarChart data={predict_probas}
+                                             title={'Prediction probabilities'}
+                                             margin={50}
+                                             width={350}
+                                />
                                 <div style={{flex: 1}} />
                             </div>
                         </div>
                     </CardText>
                 </Card>);
         }
-        return (
-            <Card style={styles.card} zDepth={2}>
-                <CardHeader style={{textAlign: 'center'}}>
-                    <h3>Waiting for user input <ReactAnimatedEllipsis style={{fontSize: "3rem"}} /></h3>
-                </CardHeader>
-            </Card>
-        );
+        return '';
     }
 }
 

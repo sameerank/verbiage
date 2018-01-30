@@ -19,13 +19,14 @@ class HorBarChart extends Component {
 
     render () {
         let {hoveredCell} = this.state;
+        console.log(this.props.margin);
         return (
             <div style={styles.div}>
                 <h2>{this.props.title}</h2>
                 <XYPlot
-                    margin={{left: 150, right: 150}}
+                    margin={{left: this.props.margin, right: this.props.margin}}
                     yType={'ordinal'}
-                    width={500}
+                    width={this.props.width}
                     height={150}
                     title={this.props.title}
                 >

@@ -12,7 +12,7 @@ const styles = {
         margin: '20px',
     },
     card: {
-        marginRight: 10,
+        marginRight: 2,
         flex: 1,
         minWidth: 0
     },

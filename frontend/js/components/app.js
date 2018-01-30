@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BlurbInputContainer from './inputs/blurb_input_container';
 import BlurbOutputContainer from './outputs/blurb_output_container';
 import FeatureImportanceContainer from './outputs/feature_importance_container';
+import HighlightedTextContainer from './outputs/highlighted_text_container';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
 
 const styles = {
@@ -9,9 +10,9 @@ const styles = {
         flex: '1 1 100%',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: 5
     },
     rowDiv:{
+        marginTop: 5,
         display: 'flex',
         flexDirection: 'row',
     },
@@ -44,15 +45,15 @@ class App extends Component {
                         subtitleStyle={{paddingTop: 10}}
                     />
                 </Card>
-                <Card style={styles.card} zDepth={2}>
-                    <CardText>
-                        <div style={styles.rowDiv}>
-                            <BlurbInputContainer />
-                            <BlurbOutputContainer />
-                        </div>
-                    </CardText>
-                </Card>
-                <FeatureImportanceContainer />
+                <div style={styles.rowDiv}>
+                    <BlurbInputContainer />
+                    <HighlightedTextContainer />
+                </div>
+                <div style={styles.rowDiv}>
+                    <BlurbOutputContainer />
+                    <FeatureImportanceContainer />
+                </div>
+
             </div>
         );
     }

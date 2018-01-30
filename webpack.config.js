@@ -23,10 +23,10 @@ module.exports = {
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
         }),
-        new UglifyJsPlugin({
-            include: /\.min\.js$/,
-            uglifyOptions: {compress: true}
-        })
+        // new UglifyJsPlugin({
+        //     include: /\.min\.js$/,
+        //     uglifyOptions: {compress: true}
+        // })
     ],
     module: {
         loaders: [
