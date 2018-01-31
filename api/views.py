@@ -46,14 +46,6 @@ def classifier(request, format=None):
     exp = explainer.explain_instance(standardized_text, c.predict_proba, num_features=6, labels=[0, 1, 2, 3])
     predict_probas = dict(zip(exp.class_names, exp.predict_proba))
     prediction = max(predict_probas.items(), key=itemgetter(1))[0]
-    highlighted_html = {}
-    for lbl in exp.available_labels():
-        original_text = standardized_text
-        for word, val in exp.as_list(label=lbl):
-            color = "#FF4136" if val < 0 else "#2ECC40"
-            original_text = " ".join(['<span style="color: {};">{}</span>'.format(
-                color, w) if w == word else w for w in original_text.split()])
-        highlighted_html[exp.class_names[lbl]] = original_text
     response = {
         'final_prediction': prediction,
         'ordered_class_names': exp.class_names,
@@ -61,8 +53,7 @@ def classifier(request, format=None):
         'as_list': {
             exp.class_names[lbl]: exp.as_list(label=lbl) for lbl in exp.available_labels()
         },
-        'highlighted_html': highlighted_html
-
+        'standardized_text': standardized_text
     }
     return Response(response, status=status.HTTP_201_CREATED)
 

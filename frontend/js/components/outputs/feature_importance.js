@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Card, CardText, CardHeader} from 'material-ui/Card';
 import _ from 'lodash'
 import HorBarChart from './horizontal_bar';
+import AnnotatedDescription from './annotated_description';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import {FETCHING, TYPING} from "../../actions/input_actions";
@@ -56,8 +57,7 @@ class FeatureImportance extends Component {
                     title: k,
                     data: this.props.classifier.as_list[k].map(
                         (wrd_ind) => ({x: wrd_ind[1], y: wrd_ind[0]})
-                    ),
-                    highlighted_html: this.props.classifier.highlighted_html[k]
+                    )
                 })
             );
             return (
@@ -87,7 +87,7 @@ class FeatureImportance extends Component {
                                     />
                                     <div style={{marginLeft: 10}}>
                                         <h3>Annotated text for {as_list.title}</h3>
-                                        <h3 dangerouslySetInnerHTML={{__html: as_list.highlighted_html}} />
+                                        <h3><AnnotatedDescription ageRange={as_list.title} classifier={this.props.classifier} /></h3>
                                     </div>
                                 </CardText>) }
                             </SwipeableViews>

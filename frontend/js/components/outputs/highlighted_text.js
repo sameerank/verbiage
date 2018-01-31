@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
-import FontIcon from 'material-ui/FontIcon';
-import IconButton from 'material-ui/IconButton';
 import _ from 'lodash'
 import ReactAnimatedEllipsis from 'react-animated-ellipsis';
 import { FETCHING, TYPING } from '../../actions/input_actions';
 import CircularProgress from 'material-ui/CircularProgress';
-import {red500, green500} from 'material-ui/styles/colors';
+import AnnotatedDescription from './annotated_description';
 
 const styles = {
     div: {
@@ -61,7 +59,7 @@ class HighlightedText extends Component {
                     <CardText>
                         <div style={styles.colDiv}>
                             <div style={styles.div}>
-                                <h2 dangerouslySetInnerHTML={{ __html: this.props.classifier.highlighted_html[ageRange] }} />
+                                <h2><AnnotatedDescription ageRange={ageRange} classifier={this.props.classifier} /></h2>
                             </div>
                         </div>
                     </CardText>

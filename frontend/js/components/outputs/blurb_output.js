@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import {Card, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardText} from 'material-ui/Card';
 import _ from 'lodash'
 import HorBarChart from './horizontal_bar';
-import ReactAnimatedEllipsis from 'react-animated-ellipsis';
 import { FETCHING, TYPING } from '../../actions/input_actions';
-import CircularProgress from 'material-ui/CircularProgress';
+
 
 const styles = {
     div: {
