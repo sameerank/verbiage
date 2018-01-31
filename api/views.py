@@ -3,10 +3,11 @@ from api.serializers import PickleSerializer, AgeGroupSerializer, BookSerializer
 from api.utils import standardize_text
 from sklearn.pipeline import make_pipeline
 from lime.lime_text import LimeTextExplainer
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
 from operator import itemgetter
 
 GRADE_CATEGORIES = ('K-2', '3-5', '6-8', '9-12',)
@@ -64,3 +65,13 @@ def classifier(request, format=None):
 
     }
     return Response(response, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'age-groups': reverse('age-groups', request=request, format=format),
+        'random-book': reverse('random-book', request=request, format=format),
+        'pickles': reverse('pickles', request=request, format=format),
+        'classifier': reverse('classifier', request=request, format=format)
+    })

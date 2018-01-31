@@ -85,7 +85,7 @@ class BlurbInput extends Component {
                         onChange={(e) => this.handleTextChange(e)}
                     />
                     <SelectField
-                        floatingLabelText="Intended Age"
+                        floatingLabelText="Target Age"
                         value={this.props.input.age}
                         onChange={(e, i, v) => this.handleSelectChange(e, i, v)}
                         style={styles.selectWidth}

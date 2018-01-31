@@ -47,7 +47,7 @@ class HighlightedText extends Component {
                 return (
                     <Card style={styles.card} zDepth={2}>
                         <CardHeader style={{textAlign: 'center'}}>
-                            <h3>Specify the intended age to view the annotated text here</h3>
+                            <h3>Specify the target age to view the annotated text here</h3>
                         </CardHeader>
                     </Card>
                 );
@@ -56,12 +56,12 @@ class HighlightedText extends Component {
             return (
                 <Card style={styles.card} zDepth={2}>
                     <CardHeader style={{textAlign: 'center'}}>
-                        <h2>Annotated text for { ageRange }</h2>
+                        <h2>Annotated text for { ageRange } target</h2>
                     </CardHeader>
                     <CardText>
                         <div style={styles.colDiv}>
                             <div style={styles.div}>
-                                <h2 dangerouslySetInnerHTML={{__html: this.props.classifier.highlighted_html[ageRange] }} />
+                                <h2 dangerouslySetInnerHTML={{ __html: this.props.classifier.highlighted_html[ageRange] }} />
                             </div>
                         </div>
                     </CardText>
