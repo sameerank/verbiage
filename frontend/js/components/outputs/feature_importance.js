@@ -81,12 +81,12 @@ class FeatureImportance extends Component {
                                 { as_lists.map((as_list, idx) => <CardText key={idx} style={styles.rowDiv}>
                                     <HorBarChart
                                         data={as_list.data}
-                                        title={'Feature importance in the ' + as_list.title + ' grade range'}
+                                        title={ 'Feature importance for ' + as_list.title }
                                         margin={150}
                                         width={500}
                                     />
                                     <div style={{marginLeft: 10}}>
-                                        <h2>Standardized text with highlighted words</h2>
+                                        <h3>Annotated text for {as_list.title}</h3>
                                         <h3 dangerouslySetInnerHTML={{__html: as_list.highlighted_html}} />
                                     </div>
                                 </CardText>) }

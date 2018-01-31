@@ -1,4 +1,4 @@
-import { RECEIVE_AGE_GROUPS, AGE_GROUP_ERROR } from '../actions/age_group_actions';
+import { RECEIVE_AGE_GROUPS } from '../actions/age_group_actions';
 import merge from 'lodash/merge';
 
 const ageGroupReducer = (state = {}, action) => {
@@ -7,8 +7,6 @@ const ageGroupReducer = (state = {}, action) => {
         case RECEIVE_AGE_GROUPS:
             const newAgeGroups = action.ageGroups;
             return merge({}, state, newAgeGroups);
-        case AGE_GROUP_ERROR:
-            console.log(action.error);
         default:
             return state;
     }

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
+import FontIcon from 'material-ui/FontIcon';
+import IconButton from 'material-ui/IconButton';
 import _ from 'lodash'
-import HorBarChart from './horizontal_bar';
 import ReactAnimatedEllipsis from 'react-animated-ellipsis';
 import { FETCHING, TYPING } from '../../actions/input_actions';
 import CircularProgress from 'material-ui/CircularProgress';
+import {red500, green500} from 'material-ui/styles/colors';
 
 const styles = {
     div: {
@@ -22,12 +24,6 @@ const styles = {
     colDiv:{
         display: 'flex',
         flexDirection: 'column',
-    },
-    greenSpan: {
-        backgroundColor: '#2ECC40'
-    },
-    redSpan: {
-        backgroundColor: '#FF4136'
     }
 };
 
@@ -51,7 +47,7 @@ class HighlightedText extends Component {
                 return (
                     <Card style={styles.card} zDepth={2}>
                         <CardHeader style={{textAlign: 'center'}}>
-                            <h3>Specify the intended age to view highlighted text for that category.</h3>
+                            <h3>Specify the intended age to view the annotated text here</h3>
                         </CardHeader>
                     </Card>
                 );
@@ -60,20 +56,12 @@ class HighlightedText extends Component {
             return (
                 <Card style={styles.card} zDepth={2}>
                     <CardHeader style={{textAlign: 'center'}}>
-                        <h3>Standardized text with highlighted words for the intended age ({ ageRange })</h3>
-                        <p>(
-                            <span style={styles.greenSpan}>
-                                green
-                            </span> is good, <span style={styles.redSpan}>
-                                red
-                            </span> is bad
-                            )
-                        </p>
+                        <h2>Annotated text for { ageRange }</h2>
                     </CardHeader>
                     <CardText>
                         <div style={styles.colDiv}>
                             <div style={styles.div}>
-                                <h3 dangerouslySetInnerHTML={{__html: this.props.classifier.highlighted_html[ageRange] }} />
+                                <h2 dangerouslySetInnerHTML={{__html: this.props.classifier.highlighted_html[ageRange] }} />
                             </div>
                         </div>
                     </CardText>

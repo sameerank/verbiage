@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import _ from 'lodash';
-import {FETCHING, TYPING} from '../../actions/input_actions'
+import {FETCHING, TYPING} from '../../actions/input_actions';
 
 const styles = {
     div: {
@@ -38,6 +38,16 @@ class BlurbInput extends Component {
         this.props.fetchAgeGroups();
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (!_.isEmpty(nextProps.book)) {
+            const payload = nextProps.book;
+            this.props.typingInput(payload);
+            this.props.clearBook();
+            this.props.fetchingInput(payload);
+            this.props.createClassifier(payload);
+        }
+    }
+
     handleTextChange(event) {
         const payload = { description: event.target.value };
         this.props.typingInput(payload);
@@ -54,6 +64,10 @@ class BlurbInput extends Component {
         this.props.clearClassifier();
         this.props.clearAge();
         this.props.clearInput();
+    }
+
+    handleBookClick(event) {
+        this.props.fetchBook();
     }
 
     render () {
@@ -80,7 +94,10 @@ class BlurbInput extends Component {
                         <MenuItem value={null} primaryText="" />
                         { !_.isEmpty(this.props.ageGroups) ?
                             Object.keys(this.props.ageGroups).map(idx => (
-                                <MenuItem value={ this.props.ageGroups[idx].id } primaryText={ this.props.ageGroups[idx].label } />
+                                <MenuItem value={ this.props.ageGroups[idx].id }
+                                          primaryText={ this.props.ageGroups[idx].label }
+                                          key={ idx }
+                                />
                                 )
                             ) :
                             null
@@ -92,6 +109,11 @@ class BlurbInput extends Component {
                                   secondary={true}
                                   disabled={this.props.input.type === FETCHING || !this.props.input.description}
                                   onClick={(e) => this.handleClearClick(e)} />
+                    <RaisedButton style={styles.button}
+                                  label="Try a random book"
+                                  primary={true}
+                                  disabled={this.props.input.type === FETCHING}
+                                  onClick={(e) => this.handleBookClick(e)} />
                 </form>
             </Card>
         );

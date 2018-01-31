@@ -1,4 +1,4 @@
-import { RECEIVE_CLASSIFIER, CLEAR_CLASSIFIER, CLASSIFIER_ERROR } from '../actions/classifier_actions';
+import { RECEIVE_CLASSIFIER, CLEAR_CLASSIFIER } from '../actions/classifier_actions';
 import merge from 'lodash/merge';
 
 const classifierReducer = (state = {}, action) => {
@@ -9,8 +9,6 @@ const classifierReducer = (state = {}, action) => {
             return merge({}, state, newClassifier);
         case CLEAR_CLASSIFIER:
             return {};
-        case CLASSIFIER_ERROR:
-            console.log(action.error);
         default:
             return state;
     }

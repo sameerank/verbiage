@@ -50,7 +50,7 @@ def classifier(request, format=None):
         original_text = standardized_text
         for word, val in exp.as_list(label=lbl):
             color = "#FF4136" if val < 0 else "#2ECC40"
-            original_text = " ".join(['<span style="background-color: {};">{}</span>'.format(
+            original_text = " ".join(['<span style="color: {};">{}</span>'.format(
                 color, w) if w == word else w for w in original_text.split()])
         highlighted_html[exp.class_names[lbl]] = original_text
     response = {
