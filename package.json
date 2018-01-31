@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "material-ui": "^0.20.0",
+    "react-lightweight-tooltip": "^1.0.0",
     "react-swipeable-views": "^0.12.12",
     "react-vis": "^1.8.2"
   }
