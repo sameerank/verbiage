@@ -1,5 +1,5 @@
 import * as AgeGroupAPIUtil from '../util/book_api_util';
-import { receiveErrors, clearErrors } from './error_actions';
+import { receiveError, clearError } from './error_actions';
 
 export const RECEIVE_BOOK = "RECEIVE_BOOK";
 export const CLEAR_BOOK = "CLEAR_BOOK";
@@ -17,8 +17,8 @@ export const fetchBook = () => dispatch => (
     AgeGroupAPIUtil.fetchBook().then(
         book => {
             dispatch(receiveBook(book));
-            dispatch(clearErrors());
+            dispatch(clearError());
         },
-        err => dispatch(receiveErrors(err.responseJSON))
+        err => dispatch(receiveError(err))
     )
 );

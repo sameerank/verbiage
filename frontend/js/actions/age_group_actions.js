@@ -1,5 +1,5 @@
 import * as AgeGroupAPIUtil from '../util/age_group_api_util';
-import { receiveErrors, clearErrors } from './error_actions';
+import { receiveError, clearError } from './error_actions';
 
 export const RECEIVE_AGE_GROUPS = "RECEIVE_AGE_GROUPS";
 
@@ -12,8 +12,8 @@ export const fetchAgeGroups = () => dispatch => (
     AgeGroupAPIUtil.fetchAgeGroups().then(
         ageGroups => {
             dispatch(receiveAgeGroups(ageGroups));
-            dispatch(clearErrors());
+            dispatch(clearError());
         },
-        err => dispatch(receiveErrors(err.responseJSON))
+        err => dispatch(receiveError(err))
     )
 );

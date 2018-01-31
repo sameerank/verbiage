@@ -51,7 +51,10 @@ class BlurbInput extends Component {
     handleTextChange(event) {
         const payload = { description: event.target.value };
         this.props.typingInput(payload);
-        this.debouncedCreateClassifier(payload);
+        // If the string is empty or only contains non word characters, don't try to classify it
+        if (!_.isEmpty(payload.description.replace(/\W+/g, ''))) {
+            this.debouncedCreateClassifier(payload);
+        }
     }
 
     handleSelectChange(event, index, value) {

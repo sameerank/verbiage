@@ -11,8 +11,8 @@ module.exports = {
         //where you want your compiled bundle to be stored
         path: path.resolve('./frontend/bundles/'),
         //naming convention webpack should use for your files
-        filename: '[name]-[hash].min.js',
-        // filename: 'bundle.min.js',
+        // filename: '[name]-[hash].min.js',
+        filename: 'bundle.min.js',
     },
     plugins: [
         //tells webpack where to store data about your bundles.
@@ -23,10 +23,10 @@ module.exports = {
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
         }),
-        new UglifyJsPlugin({
-            include: /\.min\.js$/,
-            uglifyOptions: {compress: true}
-        })
+        // new UglifyJsPlugin({
+        //     include: /\.min\.js$/,
+        //     uglifyOptions: {compress: true}
+        // })
     ],
     module: {
         loaders: [
