@@ -47,7 +47,7 @@ class HighlightedText extends Component {
                 return (
                     <Card style={styles.card} zDepth={2}>
                         <CardHeader style={{textAlign: 'center'}}>
-                            <h3>Specify the target age to view the annotated text here</h3>
+                            <h3>Specify the target age to view the corresponding annotated text here</h3>
                         </CardHeader>
                     </Card>
                 );

@@ -63,7 +63,7 @@ class FeatureImportance extends Component {
             return (
                 <Card style={styles.outerCard} zDepth={2}>
                     <CardHeader
-                        title={ "Word importance across categories. Default selected tab is the prediction (" +
+                        title={ "Word importance across categories. The default selected tab is the prediction (" +
                         this.props.classifier.final_prediction + ")."}
                     />
                     <CardText>
