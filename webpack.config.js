@@ -26,6 +26,11 @@ module.exports = {
         new UglifyJsPlugin({
             include: /\.min\.js$/,
             uglifyOptions: {compress: true}
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
         })
     ],
     module: {

@@ -11,24 +11,20 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
     },
-    rowDiv:{
+    rowDiv: {
         marginTop: 5,
         display: 'flex',
         flexDirection: 'row',
     },
-    colDiv:{
+    titleStyle: {
+        fontFamily: 'Raleway',
+        fontSize: 35,
+        fontColor: "lightseagreen"
+    },
+    subTitle: {
         display: 'flex',
-        flexDirection: 'column',
-    },
-    headline: {
-        fontSize: 24,
-        paddingTop: 16,
-        marginBottom: 12,
-        fontWeight: 400,
-    },
-    slide: {
-        padding: 10,
-    },
+        justifyContent: 'space-between'
+    }
 };
 
 class App extends Component {
@@ -39,8 +35,16 @@ class App extends Component {
                 <Card style={styles.card} zDepth={2}>
                     <CardTitle
                         title="VerbiAge"
-                        subtitle="An app for tailoring your book's description for a target K-12 age."
-                        titleStyle={{ fontFamily: 'Raleway', fontSize: 35, fontColor: "lightseagreen" }}
+                        subtitle={
+                            <div style={ styles.subTitle }>
+                                <span>An app for tailoring your book's description for a target K-12 age.</span>
+                                <span style={{fontSize: '10px'}}>
+                                    <a href={'//github.com/sameerank/verbiage'}>github</a>&nbsp;/&nbsp;
+                                    <a href={'/api'}>api</a>
+                                </span>
+                            </div>
+                        }
+                        titleStyle={styles.titleStyle}
                         titleColor="lightseagreen"
                         subtitleStyle={{paddingTop: 10}}
                     />
