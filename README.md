@@ -1,5 +1,4 @@
-# Blurb grader
+# VerbiAge
 
-A story blurb, aka synopsis or story description, helps readers decide if they want to read a story.
+Verbiage is an app that helps authors and publishers write targeted book descriptions for readers in the K-12 age range. Built with React.js using Redux, Material-UI, react-vis for data visualization, Django REST Framework, PostgreSQL, and deployed on an AWS EC2 instance at [verbiage.help](verbiage.help).
 
-Consequently, it is helpful for book authors and publishers to know how the text in a blurb compares to other books that target a specific demographic, such as children in a certain school grade range. Given a short blurb about a book, this app will classify the storyline's target school grade range. This app helps writers validate if they are indeed writing to the book's target school grade range given a text blurb about a book and to understand how their choice of words influenced the classification.
